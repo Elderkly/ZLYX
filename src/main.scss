@@ -1,0 +1,21 @@
+html,body{
+    margin: 0;
+    //width: 100%;
+    //height: 100%;
+    //width:100vw;
+    //overflow: hidden;
+    //position: relative;
+}
+input{ text-indent: 0; background: transparent; border: 0 none; resize:none; outline:none; /*清除选中效果的默认蓝色边框 */ -webkit-appearance:none; /*清除浏览器默认的样式 */ line-height: normal;  }
+/*input::-webkit-input-placeholder { !* WebKit browsers *! line-height: 0.44rem;  }*/
+/*input:focus { color: #8b8791; }*/
+p{margin:0;padding:0}
+.van-toast{
+    padding: 30px 60px;
+    border-radius: 8px;
+}
+#app {
+    width: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+}
