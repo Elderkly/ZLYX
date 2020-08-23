@@ -22,12 +22,13 @@
 </template>
 
 <script>
-    import Vue from 'vue';
     import {Tabbar, TabbarItem} from 'vant'
-    Vue.use(Tabbar);
-    Vue.use(TabbarItem);
     export default {
         name: 'tabbar',
+        components: {
+            [Tabbar.name]: Tabbar,
+            [TabbarItem.name]: TabbarItem
+        }
     }
 </script>
 

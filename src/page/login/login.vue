@@ -27,7 +27,7 @@
             }
         },
         components: {
-            Input
+            Input,
         },
         methods: {
             change(value,type) {
@@ -83,5 +83,6 @@
         color: #fff;
         margin-left: 70px;
         margin-top: 68px;
+        margin-bottom: 100px;
     }
 </style>
