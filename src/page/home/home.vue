@@ -71,16 +71,6 @@
 
 <style scoped lang="scss">
     .header{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        height: 88px;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: $BACKGROUND-COLOR;
-        color: $TEXT-DARK-COLOR;
         .van-swipe-item{
             text-align: center;
         }
@@ -98,7 +88,7 @@
         height: 300px;
         border-radius: 26px;
         overflow: hidden;
-        transform: translateY(0);
+        -webkit-mask-image: -webkit-radial-gradient(circle,white 100%,black 100%);
         img{
             height: 300px;
         }

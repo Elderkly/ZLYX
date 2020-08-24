@@ -18,11 +18,11 @@
             Tabbar
         },
         mounted() {
-            this.showTabbar = this.$route.path !== '/login'
+            this.showTabbar = this.$route.path === '/message' || this.$route.path === '/' || this.$route.path === '/me'
         },
         watch: {
             $route(to, from) {
-                this.showTabbar = to.path !== '/login'
+                this.showTabbar = to.path === '/message' || to.path === '/' || to.path === '/me'
             }
         }
     }

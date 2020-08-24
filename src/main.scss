@@ -1,8 +1,25 @@
 html,body{
     margin: 0;
 }
-input{ text-indent: 0; background: transparent; border: 0 none; resize:none; outline:none; /*清除选中效果的默认蓝色边框 */ -webkit-appearance:none; /*清除浏览器默认的样式 */ line-height: normal;  }
-p{margin:0;padding:0}
+
+input{
+    text-indent: 0;
+    background: transparent;
+    border: 0 none;
+    resize:none;
+    outline:none; /*清除选中效果的默认蓝色边框 */
+    -webkit-appearance:none; /*清除浏览器默认的样式 */
+    line-height: normal;
+}
+
+p{
+    margin:0;
+    padding:0
+}
+
+p,span{
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
 
 #app {
     width: 100vw;
@@ -10,7 +27,23 @@ p{margin:0;padding:0}
     position: absolute;
     background: $BACKGROUND-COLOR;
 }
-
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    height: 88px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $BACKGROUND-COLOR;
+    color: $TEXT-DARK-COLOR;
+    z-index: 10;
+    p{
+        font-size: 34px;
+        font-weight: 400;
+    }
+}
 .van-toast{
     padding: 20px 40px!important;
 }
