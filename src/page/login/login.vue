@@ -68,7 +68,7 @@
         box-sizing: border-box;
         p {
             font-size: 40px;
-            color: #131313;
+            color: $TEXT-DARK-COLOR;
             font-weight: 500;
         }
     }
@@ -76,11 +76,11 @@
         width: 600px;
         height: 110px;
         border-radius: 12px;
-        background: #4FA69E;
+        background: $THEME-COLOR;
         line-height: 110px;
         text-align: center;
         font-size: 36px;
-        color: #fff;
+        color: $TEXT-LIGHT-COLOR;
         margin-left: 70px;
         margin-top: 68px;
         margin-bottom: 100px;

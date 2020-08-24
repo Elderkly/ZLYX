@@ -3,13 +3,17 @@ html,body{
 }
 input{ text-indent: 0; background: transparent; border: 0 none; resize:none; outline:none; /*清除选中效果的默认蓝色边框 */ -webkit-appearance:none; /*清除浏览器默认的样式 */ line-height: normal;  }
 p{margin:0;padding:0}
-.van-toast{
-    padding: 20px 50px;
-    border-radius: 4px;
-}
+
 #app {
     width: 100vw;
     overflow-x: hidden;
     position: absolute;
-    background: #fff;
+    background: $BACKGROUND-COLOR;
+}
+
+.van-toast{
+    padding: 20px 40px!important;
+}
+.van-tabbar{
+    background: $BACKGROUND-COLOR;
 }

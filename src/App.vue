@@ -27,7 +27,3 @@
         }
     }
 </script>
-
-<style>
-    @import "main.scss";
-</style>

@@ -1,5 +1,5 @@
 <template>
-    <van-tabbar route active-color="#4FA69E" inactive-color="#666666">
+    <van-tabbar route>
         <van-tabbar-item replace to="/message">
             <span>消息</span>
             <template #icon="props">
@@ -34,7 +34,13 @@
 
 <style scoped lang="scss">
     img{
-        width: 54px;
-        height: 54px;
+        width: 54px!important;
+        height: 54px!important;
+    }
+    .van-tabbar-item {
+        color: $MINOR-COLOR;
+    }
+    .van-tabbar-item--active {
+        color: $THEME-COLOR;
     }
 </style>

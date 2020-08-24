@@ -50,7 +50,8 @@
         top: 0;
         left: 0;
         width: 100%;
-        background: #fff;
+        background: $BACKGROUND-COLOR;
+        color: $TEXT-DARK-COLOR;
         img{
             position: absolute;
             width: 52px;
@@ -82,7 +83,7 @@
             }
             p{
                 font-size: 26px;
-                color: #14171A;
+                color: $TEXT-DARK-COLOR;
                 margin-top: 22px;
             }
         }
