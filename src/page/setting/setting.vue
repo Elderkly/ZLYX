@@ -7,12 +7,12 @@
                     <span>{{userInfo.wareHouse}}</span>
                     <img src="../../assets/img/right.png">
                 </div>
-                <div class="items">
+                <div class="items" @click="$router.push('/hospitalCode')">
                     <span>医院代码</span>
                     <span>{{userInfo.hoseCode}}</span>
                     <img src="../../assets/img/right.png">
                 </div>
-                <div class="items">
+                <div class="items" @click="$router.push('/changePassword')">
                     <span>修改密码</span>
                     <img src="../../assets/img/right.png">
                 </div>

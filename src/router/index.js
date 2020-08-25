@@ -2,9 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/page/home/home'
 import Login from '@/page/login/login'
-import Me from '@/page/me/me'
 import Message from '@/page/message/message'
+
+import Me from '@/page/me/me'
 import Setting from '@/page/setting/setting'
+import HospitalCode from '@/page/hospitalCode/hospitalCode'
+import ChangePassword from '../page/changePassword/changePassword'
 
 Vue.use(Router)
 
@@ -34,7 +37,17 @@ const _Router = new Router({
             path: '/setting',
             name: 'Setting',
             component: Setting
-        }
+        },
+        {
+            path: '/hospitalCode',
+            name: 'HospitalCode',
+            component: HospitalCode
+        },
+        {
+            path: '/changePassword',
+            name: 'ChangePassword',
+            component: ChangePassword
+        },
     ]
 })
 
