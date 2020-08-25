@@ -29,6 +29,7 @@
         methods: {
             save() {
                 if (!!this.code) {
+                    this.$store.commit('SET_USER_INFO', {...this.$store.getters.userInfo,HOSCODE: this.code})
                     this.$router.back()
                 } else {
                     Toast('请正确输入医院代码')

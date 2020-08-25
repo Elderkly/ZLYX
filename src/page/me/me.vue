@@ -8,8 +8,8 @@
                 <img src="../../assets/img/header.png">
             </div>
             <div class="user-text">
-                <p>一加五等于溜</p>
-                <p>医学工程部 ｜ ZLYY</p>
+                <p>{{$store.getters.userInfo.UserName}}</p>
+                <p>{{$store.getters.userInfo.DepartmentId}} ｜ {{$store.getters.userInfo.HOSCODE}}</p>
             </div>
         </div>
         <div class="content">
@@ -30,6 +30,9 @@
 <script>
     export default {
         name: 'Me',
+        mounted() {
+          console.log(this.$store.getters.userInfo)
+        },
         methods: {
             jump(route) {
                 !!route && this.$router.push(route)

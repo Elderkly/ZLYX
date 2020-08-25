@@ -19,6 +19,9 @@
         },
         mounted() {
             this.showTabbar = this.$route.path === '/message' || this.$route.path === '/' || this.$route.path === '/me'
+            if(!!localStorage.getItem('userInfo')) {
+                this.$store.commit('SET_USER_INFO', JSON.parse(localStorage.getItem('userInfo')))
+            }
         },
         watch: {
             $route(to, from) {

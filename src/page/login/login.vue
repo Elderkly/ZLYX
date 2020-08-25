@@ -45,14 +45,25 @@
                         !this.password ? '密码登录错误' : null
                 if (showText) Toast(showText)
                 else {
-                    localStorage.setItem('userInfo','userID: 123123')
+                    const userInfo = {
+                        Phone: '',
+                        DepartmentId: '医学工程部',
+                        UserId: '',
+                        RYLB: '',
+                        UserName: this.user,
+                        QX: '',
+                        QXMC: '',
+                        HOSCODE: this.code,
+                    }
+                    this.$store.commit('SET_USER_INFO', userInfo)
+                    localStorage.setItem('userInfo',JSON.stringify(userInfo))
                     this.$router.push('/')
                 }
             },
             wxLogin() {
 
             },
-        }
+        },
     }
 </script>
 

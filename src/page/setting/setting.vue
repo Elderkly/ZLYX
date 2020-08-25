@@ -4,12 +4,12 @@
             <div class="content">
                 <div class="items" @click="showDiaLog = true">
                     <span>仓库</span>
-                    <span>{{userInfo.wareHouse}}</span>
+                    <span>{{$store.getters.userInfo.DepartmentId}}</span>
                     <img src="../../assets/img/right.png">
                 </div>
                 <div class="items" @click="$router.push('/hospitalCode')">
                     <span>医院代码</span>
-                    <span>{{userInfo.hoseCode}}</span>
+                    <span>{{$store.getters.userInfo.HOSCODE}}</span>
                     <img src="../../assets/img/right.png">
                 </div>
                 <div class="items" @click="$router.push('/changePassword')">
@@ -43,14 +43,10 @@
         name: 'setting',
         data(){
           return {
-              showDiaLog: false,
-              actions: ['医学院工程部', '总务资产库','信息中心库'],
-              selectActions: '',
-              userInfo: {
-                  wareHouse: '医学工程部',
-                  hoseCode: 'ZLYY'
-              },
-              actionsDefaultIndex: 0
+              showDiaLog: false,                                    //  是否显示弹窗
+              actions: ['医学院工程部', '总务资产库','信息中心库'],       //  滑块选项
+              selectActions: '',                                    //  选中的部门
+              actionsDefaultIndex: 0                                //  滑块初始选中index
           }
         },
         components: {
@@ -59,10 +55,13 @@
             [Picker.name]: Picker
         },
         mounted() {
-            this.actionsDefaultIndex = this.actions.findIndex(e => e === this.userInfo.wareHouse)
+            //  初始化滑块选中index
+            this.actionsDefaultIndex = this.actions.findIndex(e => e === this.$store.getters.userInfo.DepartmentId)
         },
         methods: {
             logOut() {
+                //  注销时 清空store和缓存后 刷新页面
+                this.$store.commit('SET_USER_INFO', {})
                 localStorage.removeItem('userInfo')
                 location.reload();
             },
@@ -70,7 +69,7 @@
                 this.selectActions = value
             },
             confirm() {
-                this.userInfo.wareHouse = this.selectActions
+                this.$store.commit('SET_USER_INFO', {...this.$store.getters.userInfo,DepartmentId: this.selectActions})
                 this.showDiaLog = false
             }
         }
