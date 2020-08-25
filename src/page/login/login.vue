@@ -11,6 +11,10 @@
             <Input type="password" placeholder="请输入密码" @change="change(arguments[0],'password')"/>
         </div>
         <div class="login" @click="login">登录</div>
+        <div class="login wxLogin" @click="wxLogin">
+            <img src="../../assets/img/weixin.png"/>
+            微信登录
+        </div>
   </div>
 </template>
 
@@ -43,6 +47,9 @@
                     localStorage.setItem('userInfo','userID: 123123')
                     this.$router.push('/')
                 }
+            },
+            wxLogin() {
+
             }
         }
     }
@@ -51,7 +58,7 @@
 <style lang="scss" scoped>
     .logo-opacity{
         position: absolute;
-        top: -240px;
+        top: -280px;
         right: -180px;
         width: 600px;
         height: 600px;
@@ -59,30 +66,40 @@
     .logo{
         width: 258px;
         height: 144px;
-        margin-top: 169px;
+        margin-top: 129px;
         margin-left: 52px;
     }
     .content {
-        margin-top: 80px;
+        margin-top: 60px;
         padding: 0 70px;
         box-sizing: border-box;
         p {
-            font-size: 40px;
+            font-size: 34px;
             color: $TEXT-DARK-COLOR;
             font-weight: 500;
         }
     }
     .login {
         width: 600px;
-        height: 110px;
+        height: 100px;
         border-radius: 12px;
         background: $THEME-COLOR;
-        line-height: 110px;
+        line-height: 100px;
         text-align: center;
-        font-size: 36px;
+        font-size: 32px;
         color: $TEXT-LIGHT-COLOR;
         margin-left: 70px;
-        margin-top: 68px;
-        margin-bottom: 100px;
+        margin-top: 28px;
+    }
+    .wxLogin{
+        background: #52b62b;
+        margin-top: 30px;
+        position: relative;
+        img{
+            position: absolute;
+            width: 45px;
+            top: 25px;
+            left: 175px;
+        }
     }
 </style>

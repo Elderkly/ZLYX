@@ -34,14 +34,14 @@
 <style lang="scss" scoped>
     input{
         width: 600px;
-        height: 110px;
+        height: 100px;
         border-radius: 12px;
         border: 3px solid #E5E5E5;
         caret-color: #4FA69E;
-        font-size: 32px;
+        font-size: 28px;
         text-indent: 34px;
-        margin-top: 27px;
-        margin-bottom: 40px;
+        margin-top: 17px;
+        margin-bottom: 20px;
         box-sizing: border-box;
     }
     input::-webkit-input-placeholder{
