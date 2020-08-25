@@ -4,11 +4,11 @@
         <img src="../../assets/img/logo.png" class="logo"/>
         <div class="content">
             <p>医院代码</p>
-            <Input type="text" placeholder="请输入医院代码" @change="change(arguments[0],'code')"/>
+            <Input type="text" placeholder="请输入医院代码" @change="change(arguments[0],'code')" @enter="focusIndex = 1"/>
             <p>账号</p>
-            <Input type="text" placeholder="请输入手机号" @change="change(arguments[0],'user')"/>
+            <Input type="text" placeholder="请输入手机号" @change="change(arguments[0],'user')" @enter="focusIndex = 2" :inputFocus="focusIndex === 1"/>
             <p>密码</p>
-            <Input type="password" placeholder="请输入密码" @change="change(arguments[0],'password')"/>
+            <Input type="password" placeholder="请输入密码" @change="change(arguments[0],'password')" @enter="login" :inputFocus="focusIndex === 2"/>
         </div>
         <div class="login" @click="login">登录</div>
         <div class="login wxLogin" @click="wxLogin">
@@ -27,7 +27,8 @@
             return {
                 code: null,
                 user: null,
-                password: null
+                password: null,
+                focusIndex: null
             }
         },
         components: {
@@ -50,7 +51,7 @@
             },
             wxLogin() {
 
-            }
+            },
         }
     }
 </script>

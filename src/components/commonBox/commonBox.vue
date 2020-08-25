@@ -54,7 +54,7 @@
         left: -5%;
         top: -50px;
         height: 450px;
-        border-radius: 50%;
+        border-radius: 0 0 50% 50%;
         background: $THEME-COLOR;
     }
     .content{
