@@ -7,7 +7,8 @@ import Message from '@/page/message/message'
 import Me from '@/page/me/me'
 import Setting from '@/page/setting/setting'
 import HospitalCode from '@/page/hospitalCode/hospitalCode'
-import ChangePassword from '../page/changePassword/changePassword'
+import ChangePassword from '@/page/changePassword/changePassword'
+import About from '../page/about/about'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ const _Router = new Router({
             path: '/changePassword',
             name: 'ChangePassword',
             component: ChangePassword
+        },
+        {
+            path: '/about',
+            name: 'About',
+            component: About
         },
     ]
 })
