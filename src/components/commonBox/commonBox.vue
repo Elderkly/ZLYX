@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="commonBox">
         <div class="header">
-            <img src="../../assets/img/right.png" @click="back">
+            <img src="../../assets/img/left.png" @click="back">
             <p>{{title}}</p>
         </div>
         <div class="bool"/>
@@ -28,6 +28,10 @@
     }
 </script>
 <style scoped lang="scss">
+    .commonBox{
+        min-height: calc(100vh - 108px);
+        background: $BACKGROUND-DARK-COLOR;
+    }
     .header{
         height: 106px;
         background: $THEME-COLOR;
@@ -38,10 +42,9 @@
         }
         img{
             position: absolute;
-            left: 28px;
-            width: 16px;
-            height: 32px;
-            top: 16px;
+            left: 8px;
+            width: 52px;
+            top: 6px;
             padding: 20px
         }
     }

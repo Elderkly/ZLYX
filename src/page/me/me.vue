@@ -24,7 +24,6 @@
                 <img src="../../assets/img/right.png">
             </div>
         </div>
-        <div class="logout" @click="logOut">退出登录</div>
     </div>
 </template>
 
@@ -32,10 +31,6 @@
     export default {
         name: 'Me',
         methods: {
-            logOut() {
-                localStorage.removeItem('userInfo')
-                location.reload();
-            },
             jump(route) {
                 !!route && this.$router.push(route)
             }
@@ -108,12 +103,5 @@
                 }
             }
         }
-    }
-    .logout{
-        width:500px;
-        height: 100px;
-        text-align: center;
-        line-height: 100px;
-        background: #999;
     }
 </style>
