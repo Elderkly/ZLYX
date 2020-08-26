@@ -2,7 +2,7 @@
     <div>
         <div class="header">
             众联医修
-            <img src="../../assets/img/scan-black.png"/>
+<!--            <img src="../../assets/img/scan-black.png"/>-->
         </div>
         <div class="swiperBox">
             <van-swipe :autoplay="3000" indicator-color="white">
@@ -17,10 +17,16 @@
                 <p>{{item.name}}</p>
             </div>
         </div>
+        <van-action-sheet
+            v-model="show"
+            :actions="actions"
+            cancel-text="取消"
+            close-on-click-action
+        />
     </div>
 </template>
 <script>
-    import { Swipe, SwipeItem } from 'vant';
+    import { Swipe, SwipeItem, ActionSheet } from 'vant';
     export default {
         name: 'Home',
         data() {
@@ -59,12 +65,23 @@
                        src: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg',
                        router: ''
                     }
-                ]
+                ],
+                //  是否显示扫码提示框
+                show: false,
+                //  扫码提示框选项
+                actions: [{ name: '资产信息' }, { name: '资产报修' }, { name: '资产转科' }, { name: '资产报废'}],
+            }
+        },
+        mounted() {
+            //  如果是通过扫码进入 显示选项卡
+            if (this.$route.query.code) {
+                this.show = true
             }
         },
         components: {
             [Swipe.name]: Swipe,
             [SwipeItem.name]: SwipeItem,
+            [ActionSheet.name]: ActionSheet
         }
     }
 </script>

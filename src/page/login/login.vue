@@ -58,6 +58,7 @@
                     this.$store.commit('SET_USER_INFO', userInfo)
                     localStorage.setItem('userInfo',JSON.stringify(userInfo))
                     this.$router.push('/')
+                    window.scrollTo(0,0)
                 }
             },
             wxLogin() {
@@ -82,11 +83,11 @@
         margin-left: 52px;
     }
     .content {
-        margin-top: 60px;
+        margin-top: 30px;
         padding: 0 70px;
         box-sizing: border-box;
         p {
-            font-size: 34px;
+            font-size: 30px;
             color: $TEXT-DARK-COLOR;
             font-weight: 500;
         }

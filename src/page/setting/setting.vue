@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="height: 100%">
         <Box title="设置">
             <div class="content">
                 <div class="items" @click="showDiaLog = true">
@@ -82,7 +82,7 @@
         width: 710px;
         margin-left: 20px;
         border-radius: 12px;
-        padding: 0 28px 0 40px;
+        padding: 0 28px 0 40px!important;
         box-sizing: border-box;
         .items{
             display: flex;

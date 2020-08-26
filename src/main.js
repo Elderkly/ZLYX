@@ -4,9 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './vuex'
+import Vconsole from 'vconsole'
 import './color.scss'
 import './main.scss'
 
+new Vconsole()
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

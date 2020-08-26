@@ -56,7 +56,7 @@
 <style lang="scss" scoped>
     input{
         width: 600px;
-        height: 100px;
+        height: 95px;
         border-radius: 12px;
         border: 3px solid #E5E5E5;
         caret-color: $THEME-COLOR;

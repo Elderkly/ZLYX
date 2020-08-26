@@ -1,8 +1,11 @@
 <template>
     <div class="commonBox">
         <div class="header">
-            <img src="../../assets/img/left.png" @click="back">
+            <img src="../../assets/img/left.png" @click="back" v-if="!rightButton">
             <p>{{title}}</p>
+            <div v-if="rightButton === 'search'" class="search">
+                <img src="../../assets/img/search.png">
+            </div>
         </div>
         <div class="bool"/>
         <div class="content">
@@ -18,6 +21,10 @@
             title: {
                 type: String,
                 default: ''
+            },
+            rightButton: {
+                type: String,
+                default: null
             }
         },
         methods: {
@@ -30,6 +37,7 @@
 <style scoped lang="scss">
     .commonBox{
         min-height: calc(100vh - 108px);
+        height: 100%;
         background: $BACKGROUND-DARK-COLOR;
     }
     .header{
@@ -40,12 +48,26 @@
             font-size: 34px;
             font-weight: 400;
         }
-        img{
+        &>img{
             position: absolute;
             left: 8px;
             width: 52px;
             top: 6px;
             padding: 20px
+        }
+        .search{
+            position: absolute;
+            width: 98px;
+            height: 60px;
+            border-radius: 30px;
+            background: #037A72;
+            text-align: center;
+            right: 20px;
+            top: 20px;
+            img{
+                width: 38px;
+                margin-top: 11px;
+            }
         }
     }
     .bool{
@@ -59,6 +81,6 @@
     }
     .content{
         position: relative;
-        margin-top: 108px;
+        padding-top: 108px;
     }
 </style>

@@ -1,8 +1,7 @@
-# zlyx
+# ZLYX
 
-> A Vue.js project
 
-## Build Setup
+## 如何运行
 
 ``` bash
 # install dependencies
@@ -24,4 +23,12 @@ npm run e2e
 npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+##  注意事项
+### 针对扫码进入页面的场景
+url需要携带`?code=xxxx`参数 例如`http://192.168.2.219:8080/#/?code=1200992` 页面加载时检测到`code`参数会自动调起弹窗
+
+### 主题化
+关于全局颜色定义的文件放在`src/color.scss`
+
+### 项目相关配置信息(关于我们的内容)
+相关信息放在`src/config.js`

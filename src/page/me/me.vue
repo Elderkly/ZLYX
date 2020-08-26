@@ -30,9 +30,6 @@
 <script>
     export default {
         name: 'Me',
-        mounted() {
-          console.log(this.$store.getters.userInfo)
-        },
         methods: {
             jump(route) {
                 !!route && this.$router.push(route)
