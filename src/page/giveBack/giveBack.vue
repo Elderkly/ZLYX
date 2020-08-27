@@ -36,13 +36,43 @@
             </div>
             <div class="borrow box">
                 <p class="title">借用信息</p>
-                <Field title="申请科室" text="请选择科室" type='popup' :action="true" :data="['医学院工程部', '总务资产库','信息中心库']" @onMessage="onMessage(arguments[0], 'administrative')"/>
-                <Field title="申请人" :text="borrow.userName"  @onMessage="onMessage(arguments[0], 'userName')"/>
-                <Field title="申请日期" :text="`${new Date().getFullYear()}-${new Date().getMonth() < 9 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1}-${new Date().getDate() < 9 ? '0' + new Date().getDate() : new Date().getDate()}`" type="text" @onMessage="onMessage(arguments[0], 'startTime')"/>
-                <Field title="使用日期" text="请选择日期" type='calendar' :action="true" @onMessage="onMessage(arguments[0], 'startTime')"/>
-                <Field title="联系电话" :text="borrow.phone" type="text"/>
-                <Field title="预计归还日期" text="请选择日期" type="calendar" @onMessage="onMessage(arguments[0], 'endTime')"/>
-                <Field title="借用单位" :text="borrow.unit" type="text"/>
+                <div class="items">
+                    <span>申请科室</span>
+                    <span>{{borrow.administrative}}</span>
+                </div>
+                <div class="items">
+                    <span>申请人</span>
+                    <span>{{borrow.userName}}</span>
+                </div>
+                <div class="items">
+                    <span>申请日期</span>
+                    <span>{{borrow.time}}</span>
+                </div>
+                <div class="items">
+                    <span>实际借用日期</span>
+                    <span>{{borrow.startTime}}</span>
+                </div>
+                <div class="items">
+                    <span>联系电话</span>
+                    <span>{{borrow.phone}}</span>
+                </div>
+                <div class="items">
+                    <span>归还申请日期</span>
+                    <span>{{borrow.endTime}}</span>
+                </div>
+                <div class="items">
+                    <span>借用单价</span>
+                    <span>{{borrow.unit}}</span>
+                </div>
+                <div class="items">
+                    <span>预计借用金额</span>
+                    <span>{{borrow.money}}</span>
+                </div>
+                <div class="items">
+                    <span>预计借用时长</span>
+                    <span>{{borrow.duration}}</span>
+                </div>
+                <p>此设备累计使用550小时，本次借用享受9折优惠。</p>
             </div>
             <div class="explain box">
                 <p class="title">申请说明</p>
@@ -60,37 +90,40 @@
     import { Checkbox, CheckboxGroup} from 'vant'
     import Field from '@/components/field/field'
     export default {
-        name: 'BorrowDetails',
+        name: 'GiveBack',
         data() {
-          return {
-              //    设备信息
-              equipment: {
-                  img: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg',       //   图片地址
-                  name: '半导体激光手术刀',                                                                                       //   资产名称
-                  id: '1000280002312312',                                                                                      //   资产编号
-                  type: 'HOP-100123123123',                                                                                    //   规格类型
-                  serialNumber: 'GD202001238999999',                                                                           //   序列号
-                  administrative:'宣传处',                                                                                      //   使用科室
-                  deadline: '2年'                                                                                              //    使用年限
-              },
-              //    配件信息
-              accessories: ['电源线','有创压主电缆','血氧探头主电缆','心电导连线'],
-              //    选中的配件信息
-              result: [],
-              //    配件信息备注
-              resultText: [],
-              //    借用信息
-              borrow: {
-                  administrative: null,             //  科室
-                  userName: '涛涛',                  //  申请人
-                  startTime: null,                  //  使用日期
-                  phone: '17700661770',             //  联系电话
-                  endTime: null,                    //  归还日期
-                  unit: '5元/每小时'                 //   借用单位
-              },
-              //    申请说明
-              explain: null
-          }
+            return {
+                //    设备信息
+                equipment: {
+                    img: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg',       //   图片地址
+                    name: '半导体激光手术刀',                                                                                       //   资产名称
+                    id: '1000280002312312',                                                                                      //   资产编号
+                    type: 'HOP-100123123123',                                                                                    //   规格类型
+                    serialNumber: 'GD202001238999999',                                                                           //   序列号
+                    administrative:'宣传处',                                                                                      //   使用科室
+                    deadline: '2年'                                                                                              //    使用年限
+                },
+                //    配件信息
+                accessories: ['电源线','有创压主电缆','血氧探头主电缆','心电导连线'],
+                //    选中的配件信息
+                result: [],
+                //    配件信息备注
+                resultText: [],
+                //    借用信息
+                borrow: {
+                    administrative: '宣传处',             //  科室
+                    userName: '涛涛',                     //  申请人
+                    startTime: '2020-06-20',             //  使用日期
+                    phone: '17700661770',                //  联系电话
+                    endTime: '2020-08-30',               //  归还日期
+                    unit: '5元/每小时',                    //  借用单位
+                    money: '10000',                       //  预计借用金额
+                    duration: '72月',                     //   预计借用时长
+                    time: '2020-06-19',                   //   申请日期
+                },
+                //    申请说明
+                explain: null
+            }
         },
         components: {
             Box,
@@ -205,8 +238,28 @@
         }
     }
     .borrow{
+        padding-bottom: 44px;
         .title{
             margin-bottom: 10px;
+        }
+        .items{
+            display: flex;
+            margin-bottom: 26px;
+            span{
+                &:first-child{
+                    color: #999999;
+                    font-size: 29px;
+                    flex: 1;
+                }
+                &:last-child{
+                    font-size: 29px;
+                    color: #333;
+                }
+            }
+        }
+        p:last-child{
+            color: #FF4D39;
+            font-size: 24px;
         }
     }
     .explain{

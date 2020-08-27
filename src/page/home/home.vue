@@ -48,7 +48,7 @@
                     { name: '设备申购', icon: require('../../assets/img/subscribe.png'), url: ''},
                     { name: '验收入库', icon: require('../../assets/img/storage.png'), url: ''},
                     { name: '借用申请', icon: require('../../assets/img/borrow.png'), url: '/borrowList'},
-                    { name: '归还申请', icon: require('../../assets/img/return.png'), url: ''},
+                    { name: '归还申请', icon: require('../../assets/img/return.png'), url: '/giveBack'},
                 ],
                 //  海报
                 banner: [

@@ -10,6 +10,8 @@ import Home from '@/page/home/home'
 import BorrowList from '@/page/borrowList/borrowList'
 //  借用详情
 import BorrowDetails from '@/page/borrowDetails/borrowDetails'
+//  归还
+import GiveBack from '../page/giveBack/giveBack'
 
 //  消息
 import Message from '@/page/message/message'
@@ -78,6 +80,11 @@ const _Router = new Router({
             path: '/borrowDetails',
             name: 'BorrowDetails',
             component: BorrowDetails
+        },
+        {
+            path: '/giveBack',
+            name: 'GiveBack',
+            component: GiveBack
         },
     ]
 })
