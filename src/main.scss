@@ -24,7 +24,7 @@ p,span{
 #app {
     width: 100vw;
     overflow-x: hidden;
-    position: absolute;
+    position: relative;
     background: $BACKGROUND-COLOR;
 }
 .header {
@@ -35,7 +35,7 @@ p,span{
     height: 88px;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     background: $BACKGROUND-COLOR;
     color: $TEXT-DARK-COLOR;
     z-index: 10;

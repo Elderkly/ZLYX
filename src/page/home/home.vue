@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="box">
         <div class="header">
             众联医修
 <!--            <img src="../../assets/img/scan-black.png"/>-->
@@ -92,6 +92,9 @@
 </script>
 
 <style scoped lang="scss">
+    .box{
+        padding-bottom: 80px;
+    }
     .header{
         .van-swipe-item{
             text-align: center;
