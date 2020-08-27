@@ -118,7 +118,7 @@
         width: 710px;
         margin: auto;
         padding-top: 95px;
-        padding-bottom: 20px;
+        /*padding-bottom: 20px;*/
         .messageBox{
             .triangle{
                 width: 0;

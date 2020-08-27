@@ -8,7 +8,7 @@ import Vconsole from 'vconsole'
 import './color.scss'
 import './main.scss'
 
-new Vconsole()
+// new Vconsole()
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

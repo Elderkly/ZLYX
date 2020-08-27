@@ -1,5 +1,5 @@
 <template>
-    <div class="commonBox">
+    <div class="commonBox" :style="{minHeight: $store.getters.showTabbar ? 'calc(100vh - 50px)' : '100vh'}">
         <div class="header">
             <img src="../../assets/img/left.png" @click="back" v-if="!rightButton">
             <p>{{title}}</p>
@@ -36,10 +36,10 @@
 </script>
 <style scoped lang="scss">
     .commonBox{
-        min-height: calc(100vh - 108px);
-        /*height: 100%;*/
+        height: auto;
         background: $BACKGROUND-DARK-COLOR;
         padding-bottom: 50px;
+        box-sizing: border-box;
     }
     .header{
         height: 106px;

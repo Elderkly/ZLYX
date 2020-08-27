@@ -112,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-                <div>申请借用</div>
+                <div @click="jump">申请借用</div>
             </div>
             <div>
                 <span>启用日期</span>
