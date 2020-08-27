@@ -12,7 +12,7 @@
             </van-swipe>
         </div>
         <div class="content">
-            <div class="items" v-for="item in list" >
+            <div class="items" v-for="item in list" @click="itemClick(item)">
                 <img :src="item.icon">
                 <p>{{item.name}}</p>
             </div>
@@ -47,7 +47,7 @@
                     { name: '预防维护', icon: require('../../assets/img/maintain.png'), url: ''},
                     { name: '设备申购', icon: require('../../assets/img/subscribe.png'), url: ''},
                     { name: '验收入库', icon: require('../../assets/img/storage.png'), url: ''},
-                    { name: '借用申请', icon: require('../../assets/img/borrow.png'), url: ''},
+                    { name: '借用申请', icon: require('../../assets/img/borrow.png'), url: '/borrowList'},
                     { name: '归还申请', icon: require('../../assets/img/return.png'), url: ''},
                 ],
                 //  海报
@@ -82,6 +82,11 @@
             [Swipe.name]: Swipe,
             [SwipeItem.name]: SwipeItem,
             [ActionSheet.name]: ActionSheet
+        },
+        methods: {
+            itemClick(item) {
+                if (!!item.url) this.$router.push(item.url)
+            }
         }
     }
 </script>

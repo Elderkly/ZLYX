@@ -11,10 +11,10 @@
             <Input type="password" placeholder="请输入密码" @change="change(arguments[0],'password')" @enter="login" :inputFocus="focusIndex === 2"/>
         </div>
         <div class="login" @click="login">登录</div>
-        <div class="login wxLogin" @click="wxLogin">
-            <img src="../../assets/img/weixin.png"/>
-            微信登录
-        </div>
+<!--        <div class="login wxLogin" @click="wxLogin">-->
+<!--            <img src="../../assets/img/weixin.png"/>-->
+<!--            微信登录-->
+<!--        </div>-->
   </div>
 </template>
 
@@ -61,9 +61,9 @@
                     window.scrollTo(0,0)
                 }
             },
-            wxLogin() {
-
-            },
+            // wxLogin() {
+            //
+            // },
         },
     }
 </script>

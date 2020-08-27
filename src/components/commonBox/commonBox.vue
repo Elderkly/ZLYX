@@ -37,8 +37,9 @@
 <style scoped lang="scss">
     .commonBox{
         min-height: calc(100vh - 108px);
-        height: 100%;
+        /*height: 100%;*/
         background: $BACKGROUND-DARK-COLOR;
+        padding-bottom: 50px;
     }
     .header{
         height: 106px;
@@ -82,5 +83,7 @@
     .content{
         position: relative;
         padding-top: 108px;
+        width: 710px;
+        margin: auto;
     }
 </style>

@@ -79,8 +79,6 @@
 <style scoped lang="scss">
     .content{
         background: $BACKGROUND-COLOR;
-        width: 710px;
-        margin-left: 20px;
         border-radius: 12px;
         padding: 0 28px 0 40px!important;
         box-sizing: border-box;
