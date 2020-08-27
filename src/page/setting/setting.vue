@@ -115,28 +115,4 @@
         font-size: 30px;
         color: #9B9B9B;
     }
-    .picker-header{
-        height: 114px;
-        width: 711px;
-        line-height: 114px;
-        margin: auto;
-        border-bottom: 2px solid #EDEDED;
-        display: flex;
-        position: absolute;
-        z-index: 10;
-        left: 0;
-        right: 0;
-        background: $BACKGROUND-COLOR;
-        span{
-            font-size: 34px;
-            &:first-child{
-                color: $TEXT-DARK-COLOR;
-                flex: 1;
-            }
-            &:last-child{
-                color: $THEME-COLOR;
-            }
-
-        }
-    }
 </style>

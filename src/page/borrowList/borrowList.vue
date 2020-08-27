@@ -15,7 +15,7 @@
             <div>
                 <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
                 <div>
-                    <p>半导体激光手术刀</p>
+                    <p class="ellipsis">半导体激光手术刀123123123123123123</p>
                     <div>
                         <div>
                             <p>资产编号：</p>
@@ -24,10 +24,10 @@
                             <p>存放地点：</p>
                         </div>
                         <div>
-                            <p>100028000</p>
-                            <p>DK01CFU4</p>
-                            <p>HOP-100</p>
-                            <p>医学院工程部</p>
+                            <p class="ellipsis">1000280002312312</p>
+                            <p class="ellipsis">DK01CFU43123123</p>
+                            <p class="ellipsis">HOP-100123123123</p>
+                            <p class="ellipsis">医学院工程部123123</p>
                         </div>
                     </div>
                 </div>
@@ -205,6 +205,7 @@
                             font-weight: bold;
                             font-size: 32px;
                             margin-bottom: 18px;
+                            width: 330px;
                         }
                         &>div{
                             display: flex;
@@ -212,6 +213,13 @@
                                 color: #999;
                                 font-size: 26px;
                                 line-height: 45px;
+                            }
+                            &>div{
+                                &:last-child{
+                                    p{
+                                        width: 170px;
+                                    }
+                                }
                             }
                         }
                     }
