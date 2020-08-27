@@ -7,7 +7,9 @@ import Login from '@/page/login/login'
 //  首页
 import Home from '@/page/home/home'
 //  借用列表
-import BorrowList from '../page/borrowList/borrowList'
+import BorrowList from '@/page/borrowList/borrowList'
+//  借用详情
+import BorrowDetails from '@/page/borrowDetails/borrowDetails'
 
 //  消息
 import Message from '@/page/message/message'
@@ -72,6 +74,11 @@ const _Router = new Router({
             name: 'BorrowList',
             component: BorrowList
         },
+        {
+            path: '/borrowDetails',
+            name: 'BorrowDetails',
+            component: BorrowDetails
+        },
     ]
 })
 
@@ -80,6 +87,17 @@ _Router.beforeEach((to, from, next) => {
         return next('/login')
     } else {
         return next()
+    }
+})
+_Router.afterEach((to, from) => {
+    //  如果是跳转到二级页面 则滚动到顶部
+    if (to.name !== 'Home' && to.name !== 'Message' && to.name !== 'Me') {
+        setTimeout(() => {
+            const commonBox = document.querySelector('.commonBox')
+            commonBox &&  commonBox.scrollIntoView({
+                block: 'start'  //元素到页面顶部，其他还有 end, center
+            })
+        },0)
     }
 })
 
