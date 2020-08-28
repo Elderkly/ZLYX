@@ -22,7 +22,7 @@
             finished-text="没有更多了"
             @load="onLoad"
         >
-            <div class="items" v-for="item in NoticeList">
+            <div class="items" v-for="item in NoticeList" @click="config[config.findIndex(e => e.id === item.State)].router && $router.push(config[config.findIndex(e => e.id === item.State)].router)">
                 <img :src="config[config.findIndex(e => e.id === item.State)] && config[config.findIndex(e => e.id === item.State)].img">
                 <div>
                     <p class="ellipsis">{{item.EquName}}</p>

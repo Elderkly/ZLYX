@@ -11,10 +11,12 @@ import BorrowList from '@/page/borrowList/borrowList'
 //  借用详情
 import BorrowDetails from '@/page/borrowDetails/borrowDetails'
 //  归还
-import GiveBack from '../page/giveBack/giveBack'
+import GiveBack from '@/page/giveBack/giveBack'
 
 //  消息
 import Message from '@/page/message/message'
+//  接单
+import OrderReceiving from '@/page/orderReceiving/orderReceiving'
 
 //  我的
 import Me from '@/page/me/me'
@@ -85,6 +87,11 @@ const _Router = new Router({
             path: '/giveBack',
             name: 'GiveBack',
             component: GiveBack
+        },
+        {
+            path: '/orderReceiving',
+            name: 'OrderReceiving',
+            component: OrderReceiving
         },
     ]
 })
