@@ -1,51 +1,49 @@
 <template>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" :disabled="showCalendar">
-        <div class="messageBox">
-            <div class="triangle"/>
-            <div class="calendar">
+    <div class="messageBox">
+        <div class="triangle"/>
+        <div class="calendar">
+            <div>
+                <p>开始日期</p>
+                <P>{{`${startTime.getFullYear()}-${startTime.getMonth() < 9 ? '0' + (startTime.getMonth() + 1) : startTime.getMonth() + 1}-${startTime.getDate() < 9 ? '0' + startTime.getDate() : startTime.getDate()}`}}</P>
+            </div>
+            <div>
+                <div/>
+                <div>{{endTime ? parseInt((endTime.getTime() - new Date(startTime.toLocaleDateString()).getTime()) / 86400000) : 0}}天</div>
+            </div>
+            <div @click="showCalendar = true">
+                <p>结束日期</p>
+                <p :class="endTime ? 'black' : 'while'">{{endTime ? `${endTime.getFullYear()}-${endTime.getMonth() < 9 ? '0' + (endTime.getMonth() + 1) : endTime.getMonth() + 1}-${endTime.getDate() < 9 ? '0' + endTime.getDate() : endTime.getDate()}` : '请选择'}}</p>
+            </div>
+        </div>
+        <p class="dataLength">全部消息<span>{{NoticeList.length}}条</span></p>
+        <van-list
+            v-model="loading"
+            :finished="finished"
+            finished-text="没有更多了"
+            @load="onLoad"
+        >
+            <div class="items" v-for="item in NoticeList">
+                <img :src="config[config.findIndex(e => e.id === item.State)] && config[config.findIndex(e => e.id === item.State)].img">
                 <div>
-                    <p>开始日期</p>
-                    <P>{{`${startTime.getFullYear()}-${startTime.getMonth() < 9 ? '0' + (startTime.getMonth() + 1) : startTime.getMonth() + 1}-${startTime.getDate() < 9 ? '0' + startTime.getDate() : startTime.getDate()}`}}</P>
+                    <p class="ellipsis">{{item.EquName}}</p>
+                    <div>
+                        <div>{{item.DepartmentName}}</div>
+                    </div>
+                    <p>{{item.OrderNo}}</p>
                 </div>
                 <div>
-                    <div/>
-                    <div>{{endTime ? parseInt((endTime.getTime() - new Date(startTime.toLocaleDateString()).getTime()) / 86400000) : 0}}天</div>
-                </div>
-                <div @click="showCalendar = true">
-                    <p>结束日期</p>
-                    <p :class="endTime ? 'black' : 'while'">{{endTime ? `${endTime.getFullYear()}-${endTime.getMonth() < 9 ? '0' + (endTime.getMonth() + 1) : endTime.getMonth() + 1}-${endTime.getDate() < 9 ? '0' + endTime.getDate() : endTime.getDate()}` : '请选择'}}</p>
+                    <div :style="{background: config[config.findIndex(e => e.id === item.State)] && config[config.findIndex(e => e.id === item.State)].color}">
+                        {{config[config.findIndex(e => e.id === item.State)] && config[config.findIndex(e => e.id === item.State)].text}}</div>
+                    <p class="ellipsis">{{item.RepairDate}}</p>
                 </div>
             </div>
-            <p class="dataLength">全部消息<span>{{NoticeList.length}}条</span></p>
-            <van-list
-                v-model="loading"
-                :finished="finished"
-                finished-text="没有更多了"
-                @load="onLoad"
-            >
-                <div class="items" v-for="item in NoticeList">
-                    <img :src="config[config.findIndex(e => e.id === item.State)] && config[config.findIndex(e => e.id === item.State)].img">
-                    <div>
-                        <p class="ellipsis">{{item.EquName}}</p>
-                        <div>
-                            <div>{{item.DepartmentName}}</div>
-                        </div>
-                        <p>{{item.OrderNo}}</p>
-                    </div>
-                    <div>
-                        <div :style="{background: config[config.findIndex(e => e.id === item.State)] && config[config.findIndex(e => e.id === item.State)].color}">
-                            {{config[config.findIndex(e => e.id === item.State)] && config[config.findIndex(e => e.id === item.State)].text}}</div>
-                        <p class="ellipsis">{{item.RepairDate}}</p>
-                    </div>
-                </div>
-                <van-calendar v-model="showCalendar" @confirm="onConfirm" />
-            </van-list>
-        </div>
-    </van-pull-refresh>
+            <van-calendar v-model="showCalendar" @confirm="onConfirm" />
+        </van-list>
+    </div>
 </template>
 
 <script>
-    import {Calendar, PullRefresh, List} from 'vant'
+    import {Calendar, List} from 'vant'
     export default {
         name: 'MessageList',
         data() {
@@ -54,8 +52,6 @@
                 loading: false,
                 //    是否没有更多数据了
                 finished: false,
-                //    是否正在下拉刷新
-                refreshing: false,
                 //    开始时间
                 startTime: new Date(),
                 //    结束时间
@@ -76,7 +72,6 @@
         },
         components: {
             [Calendar.name]: Calendar,
-            [PullRefresh.name]: PullRefresh,
             [List.name]: List
         },
         mounted() {
@@ -348,13 +343,6 @@
                 setTimeout(() => {
                     this.loading = false
                     this.finished = true
-                },1000)
-            },
-            //  下拉刷新
-            onRefresh() {
-                setTimeout(() => {
-                    this.refreshing = false
-                    this.finished = false
                 },1000)
             },
             //  日历
