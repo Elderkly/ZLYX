@@ -12,7 +12,7 @@
             </div>
             <div @click="showCalendar = true">
                 <p>结束日期</p>
-                <p :class="endTime ? 'black' : 'while'">{{endTime ? `${endTime.getFullYear()}-${endTime.getMonth() < 9 ? '0' + (endTime.getMonth() + 1) : endTime.getMonth() + 1}-${endTime.getDate() < 9 ? '0' + endTime.getDate() : endTime.getDate()}` : '请选择'}}</p>
+                <p :class="endTime ? 'black' : 'while'">{{endTime ? `${endTime.getFullYear()}-${endTime.getMonth() < 9 ? '0' + (endTime.getMonth() + 1) : endTime.getMonth() + 1}-${endTime.getDate() < 10 ? '0' + endTime.getDate() : endTime.getDate()}` : '请选择'}}</p>
             </div>
         </div>
         <p class="dataLength">全部消息<span>{{NoticeList.length}}条</span></p>
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+    //  消息列表模块
     import {Calendar, List} from 'vant'
     export default {
         name: 'MessageList',

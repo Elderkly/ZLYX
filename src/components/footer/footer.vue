@@ -1,6 +1,9 @@
 <template>
     <div class="footer">
-        <div class="button" @click="$emit('change')">{{text}}</div>
+        <div class="onlyButton" @click="$emit('change')" v-if="typeof button === 'string'">{{button}}</div>
+        <div class="button" v-else v-for="item in button" :style="{background: item.background, color: item.color}" @click="$emit(item.event)">
+            {{item.text}}
+        </div>
     </div>
 </template>
 
@@ -9,7 +12,7 @@
     export default {
         name: 'Footer',
         props: {
-            text: String
+            button: String | Array
         },
     }
 </script>
@@ -23,7 +26,9 @@
         background: $BACKGROUND-COLOR;
         box-shadow:0px 6px 12px rgba(0,0,0,0.16);
         padding-top: 24px;
-        .button{
+        display: flex;
+        justify-content: center;
+        .onlyButton{
             width:690px;
             height:96px;
             background:$THEME-COLOR;
@@ -33,6 +38,17 @@
             text-align: center;
             line-height: 96px;
             margin: auto;
+        }
+        .button{
+            width: 320px;
+            height: 82px;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 82px;
+            font-size: 26px;
+            &:first-child{
+                margin-right: 55px;
+            }
         }
     }
 </style>

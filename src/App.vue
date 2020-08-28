@@ -1,12 +1,15 @@
 <template>
-  <div id="app" :style="`min-height: calc(${showTabbar ? '100vh - 50px' : '100vh'})`">
-    <router-view/>
-    <Tabbar v-if="showTabbar"/>
-  </div>
+    <div id="app" :style="`min-height: calc(${showTabbar ? '100vh - 50px' : '100vh'})`">
+        <keep-alive>
+            <router-view/>
+        </keep-alive>
+        <Tabbar v-if="showTabbar"/>
+    </div>
 </template>
 
 <script>
     import Tabbar from './components/tabbar/tabbar'
+
     export default {
         name: 'App',
         data() {
@@ -20,7 +23,7 @@
         mounted() {
             this.showTabbar = this.$route.path === '/message' || this.$route.path === '/' || this.$route.path === '/me'
             this.$store.commit('SET_SHOW_TABBAR', this.showTabbar)
-            if(!!localStorage.getItem('userInfo')) {
+            if (!!localStorage.getItem('userInfo')) {
                 this.$store.commit('SET_USER_INFO', JSON.parse(localStorage.getItem('userInfo')))
             }
         },

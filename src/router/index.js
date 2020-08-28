@@ -17,6 +17,10 @@ import GiveBack from '@/page/giveBack/giveBack'
 import Message from '@/page/message/message'
 //  接单
 import OrderReceiving from '@/page/orderReceiving/orderReceiving'
+//  派工
+import Dispatch from '@/page/dispatch/dispatch'
+//  人员搜索
+import StaffSearch from '../page/staffSearch/staffSearch'
 
 //  我的
 import Me from '@/page/me/me'
@@ -92,6 +96,16 @@ const _Router = new Router({
             path: '/orderReceiving',
             name: 'OrderReceiving',
             component: OrderReceiving
+        },
+        {
+            path: '/dispatch',
+            name: 'Dispatch',
+            component: Dispatch
+        },
+        {
+            path: '/staffSearch',
+            name: 'StaffSearch',
+            component: StaffSearch
         },
     ]
 })
