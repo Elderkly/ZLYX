@@ -57,7 +57,7 @@
                     }
                     this.$store.commit('SET_USER_INFO', userInfo)
                     localStorage.setItem('userInfo',JSON.stringify(userInfo))
-                    this.$router.push('/')
+                    this.$router.replace('/' + location.search)
                     window.scrollTo(0,0)
                 }
             },
