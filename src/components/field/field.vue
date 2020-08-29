@@ -37,7 +37,7 @@
                 default: 'input'
             },
             title: String,
-            text: String,
+            text: String | Number,
             action: {
                 type: Boolean,
                 default: false

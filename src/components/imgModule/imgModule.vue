@@ -1,5 +1,5 @@
 <template>
-    <div class="box">
+    <div class="imgModuleBox">
         <p class="title">图片</p>
         <div class="imgBox">
             <img v-for="(item,index) in img" :src="img" @click="showImg(index)"/>
@@ -27,10 +27,10 @@
 </script>
 
 <style scoped lang="scss">
-    .box{
+    .imgModuleBox{
         background: $BACKGROUND-COLOR;
         border-radius: 12px;
-        padding: 34px 38px 46px;
+        padding: 34px 38px 40px;
         box-sizing: border-box;
         margin-bottom: 20px;
         .title{

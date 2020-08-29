@@ -25,6 +25,10 @@ import StaffSearch from '@/page/staffSearch/staffSearch'
 import Examine from '@/page/examine/examine'
 //  验收
 import ExamineReceive from '@/page/examineReceive/examineReceive'
+//  待处理/处理中
+import Pending from '../page/pending/pending'
+//  配件搜索
+import AccessoriesSearch from '../page/accessoriesSearch/accessoriesSearch'
 
 //  我的
 import Me from '@/page/me/me'
@@ -120,6 +124,16 @@ const _Router = new Router({
             path: '/examineReceive',
             name: 'ExamineReceive',
             component: ExamineReceive
+        },
+        {
+            path: '/pending',
+            name: 'Pending',
+            component: Pending
+        },
+        {
+            path: '/accessoriesSearch',
+            name: 'AccessoriesSearch',
+            component: AccessoriesSearch
         },
     ]
 })

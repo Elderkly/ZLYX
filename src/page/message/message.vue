@@ -17,8 +17,8 @@
                 </van-tab>
                 <van-tab title="待处理">
                     <MessageList State="2" :config="[
-                        {id: '2', text:'待处理', img: require('../../assets/img/dwx.png'), color: '#FF9E48'},
-                        {id: '5', text:'处理中', img: require('../../assets/img/wxz.png'), color: '#48A4FF'},
+                        {id: '2', text:'待处理', img: require('../../assets/img/dwx.png'), color: '#FF9E48', router: 'Pending'},
+                        {id: '5', text:'处理中', img: require('../../assets/img/wxz.png'), color: '#48A4FF', router: 'Pending'},
                     ]"/>
                 </van-tab>
                 <van-tab title="已完成">

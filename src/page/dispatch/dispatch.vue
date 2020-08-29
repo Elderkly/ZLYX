@@ -69,7 +69,7 @@
                 }
             }
         },
-        activated() {
+        mounted() {
             Bus.$on('selectStaff', item => {
                 console.log('选中了工程师',item)
                 this.RepairInfo.AssignUser = item
