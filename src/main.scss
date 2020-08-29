@@ -55,7 +55,7 @@ p,span{
     padding: 34px 36px 40px;
     box-sizing: border-box;
     margin-bottom: 20px;
-    .title{
+    &>.title{
         color: $TEXT-DARK-COLOR;
         font-size: 34px;
         font-weight: bold;

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="examine">
         <Box title="审批">
             <Title text="待审批"/>
             <FacilityDetails :data="ProcessModel"/>
@@ -177,6 +177,9 @@
 </script>
 
 <style lang="scss" scoped>
+    .examine{
+        padding-bottom: 112px;
+    }
     .accessoriesItems{
         margin-bottom: 20px;
         p{

@@ -23,6 +23,8 @@ import Dispatch from '@/page/dispatch/dispatch'
 import StaffSearch from '@/page/staffSearch/staffSearch'
 //  审批
 import Examine from '@/page/examine/examine'
+//  验收
+import ExamineReceive from '@/page/examineReceive/examineReceive'
 
 //  我的
 import Me from '@/page/me/me'
@@ -113,6 +115,11 @@ const _Router = new Router({
             path: '/examine',
             name: 'Examine',
             component: Examine
+        },
+        {
+            path: '/examineReceive',
+            name: 'ExamineReceive',
+            component: ExamineReceive
         },
     ]
 })

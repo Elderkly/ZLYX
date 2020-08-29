@@ -21,7 +21,7 @@
             />
         </van-popup>
         <!--输入框-->
-        <input v-if="type === 'input'" type="text" :placeholder="text" @input="input"/>
+        <input v-if="type === 'input'" :type="inputType" :placeholder="text" @input="input"/>
         <!--日历-->
         <van-calendar v-if="type === 'calendar'" v-model="showDiaLog" @confirm="onConfirm" />
     </div>
@@ -45,6 +45,10 @@
             data: {
                 type: Array | Object,
                 default: null
+            },
+            inputType: {
+                type: String,
+                default: 'text'
             }
         },
         data() {
@@ -129,7 +133,7 @@
             }
         }
         input{
-            width: 215px;
+            min-width: 215px;
             font-size: 29px;
             text-align: right;
             &::-webkit-input-placeholder{

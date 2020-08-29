@@ -10,7 +10,7 @@
                 <van-tab title="消息">
                     <MessageList State="1" :config="[
                         {id: '1', text:'待派工', img: require('../../assets/img/dpg.png'), color: '#FF9E48', router: 'Dispatch'},
-                        {id: '3', text:'待验收', img: require('../../assets/img/dys.png'), color: '#48A4FF'},
+                        {id: '3', text:'待验收', img: require('../../assets/img/dys.png'), color: '#48A4FF', router: 'ExamineReceive'},
                         {id: '6', text:'待接单', img: require('../../assets/img/djd.png'), color: '#48A4FF', router: 'OrderReceiving'},
                         {id: '8', text:'待审批', img: require('../../assets/img/dsp.png'), color: '#48A4FF', router: 'Examine'}
                     ]"/>

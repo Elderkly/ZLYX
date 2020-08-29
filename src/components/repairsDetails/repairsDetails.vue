@@ -33,6 +33,11 @@
             <span>备注</span>
             <span>{{data.Remarks}}</span>
         </div>
+        <div class="RepairFee" v-if="RepairFee !== undefined">
+            <span>合计费用：</span>
+            <span>¥</span>
+            <span>{{RepairFee}}</span>
+        </div>
     </div>
 </template>
 
@@ -41,7 +46,8 @@
     export default {
         name: 'RepairDetails',
         props: {
-            data: Object
+            data: Object,
+            RepairFee: String | Number,      // 维修费用
         }
     }
 </script>
@@ -72,6 +78,24 @@
                     font-size: 29px;
                     color: #333;
                 }
+            }
+        }
+        .RepairFee{
+            border-top: 2px solid #f3f3f3;
+            padding: 34px 0;
+            text-align: right;
+            span:first-child{
+                font-size: 28px;
+                color: #999;
+            }
+            span:nth-child(2) {
+                font-size: 24px;
+                color: $TEXT-DARK-COLOR;
+            }
+            span:last-child{
+                font-size: 40px;
+                color: $TEXT-DARK-COLOR;
+                font-weight: bold;
             }
         }
     }
