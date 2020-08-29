@@ -20,7 +20,9 @@ import OrderReceiving from '@/page/orderReceiving/orderReceiving'
 //  派工
 import Dispatch from '@/page/dispatch/dispatch'
 //  人员搜索
-import StaffSearch from '../page/staffSearch/staffSearch'
+import StaffSearch from '@/page/staffSearch/staffSearch'
+//  审批
+import Examine from '@/page/examine/examine'
 
 //  我的
 import Me from '@/page/me/me'
@@ -106,6 +108,11 @@ const _Router = new Router({
             path: '/staffSearch',
             name: 'StaffSearch',
             component: StaffSearch
+        },
+        {
+            path: '/examine',
+            name: 'Examine',
+            component: Examine
         },
     ]
 })

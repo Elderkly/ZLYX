@@ -49,6 +49,21 @@ p,span{
     text-overflow:ellipsis; //用省略号显示
     white-space:nowrap; //不换行
 }
+.infoBox {
+    background: $BACKGROUND-COLOR;
+    border-radius: 12px;
+    padding: 34px 36px 40px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    .title{
+        color: $TEXT-DARK-COLOR;
+        font-size: 34px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+}
+
+
 .van-toast{
     padding: 20px 40px!important;
 }
