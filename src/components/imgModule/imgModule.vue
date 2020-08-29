@@ -1,6 +1,6 @@
 <template>
     <div class="imgModuleBox">
-        <p class="title">图片</p>
+        <p class="title">{{title}}</p>
         <div class="imgBox">
             <img v-for="(item,index) in img" :src="img" @click="showImg(index)"/>
         </div>
@@ -13,7 +13,11 @@
     export default {
         name: 'ImgModule',
         props: {
-            img: Array
+            img: Array,
+            title: {
+                type: String,
+                default: '图片'
+            }
         },
         methods: {
             showImg(index) {

@@ -29,6 +29,8 @@ import ExamineReceive from '@/page/examineReceive/examineReceive'
 import Pending from '../page/pending/pending'
 //  配件搜索
 import AccessoriesSearch from '../page/accessoriesSearch/accessoriesSearch'
+//  已忽略/已验收/审核未通过
+import ServiceDetails from '../page/serviceDetails/serviceDetails'
 
 //  我的
 import Me from '@/page/me/me'
@@ -134,6 +136,11 @@ const _Router = new Router({
             path: '/accessoriesSearch',
             name: 'AccessoriesSearch',
             component: AccessoriesSearch
+        },
+        {
+            path: '/serviceDetails',
+            name: 'ServiceDetails',
+            component: ServiceDetails
         },
     ]
 })

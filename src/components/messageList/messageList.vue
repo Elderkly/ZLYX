@@ -332,7 +332,7 @@
                                 "RepairDate": "2020-06-30 11:15:51",
                                 "UserCode": null,
                                 "HandleUserName": "涛涛    ",
-                                "State": "4",
+                                "State": "7",
                                 "IsRead": 0
                             }]
             this.NoticeList = data

@@ -1,12 +1,11 @@
 <template>
-    <div class="Pending">
-        <Box title="维修处理">
-            <Title text="待处理"/>
+    <div class="ServiceDetails">
+        <Box title="维修详情">
+            <Title v-if="$route.params.item" :text="$route.params.item.State === '4' ? '已验收' : $route.params.item.State === '7' ? '审批未通过' : '已忽略'"/>
             <FacilityDetails :data="WX"/>
             <RepairsDetails :data="WX"/>
             <ImgModule :img="WX.CLImages"/>
             <ServicePerson :data="RY" @Message="value => RY = value"/>
-            <Accessories :data="PJ" @Message="changeAccessories"/>
             <div class="infoBox info">
                 <p class="title">维修信息</p>
                 <Field title="配件费用" :text="JC[0].PartsFee" type="text"/>
@@ -19,8 +18,8 @@
                 <p class="title">维修记录</p>
                 <textarea type="text" placeholder="请输入" cols="3" v-model="JC[0].RepairMark"/>
             </div>
+            <ImgModule v-if="$route.params.item && $route.params.item.State === '4'" :img="serviceEndImg" title="维修后的图片"/>
         </Box>
-        <Footer button="保存维修记录" @change="change"/>
     </div>
 </template>
 
@@ -137,28 +136,17 @@
                     "RepairMark": "0",
                     "RepairMarkName": "自修",
                     "PartsState": "配件已到达"
-                }]
+                }],
+                //  维修后的图片
+                serviceEndImg: ['https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg','https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg']
             }
         },
         methods: {
-            change() {
-                console.log(this.JC,this.PJ)
-                alert('保存维修记录')
-            },
-            changeAccessories(list) {
-                let PartsFee = 0
-                list.map(e => PartsFee += e.Count * Number(e.Price))
-                this.JC[0].PartsFee = PartsFee
-                this.PJ = list
-            }
         }
     }
 </script>
 
 <style scoped lang="scss">
-    .Pending{
-        padding-bottom: 112px;
-    }
     .record{
         p:last-child{
             font-size: 28px;

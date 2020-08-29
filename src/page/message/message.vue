@@ -23,9 +23,9 @@
                 </van-tab>
                 <van-tab title="已完成">
                     <MessageList State="3" :config="[
-                        {id: '4', text:'已验收', img: require('../../assets/img/yys.png'), color: '#4FA69E'},
-                        {id: '7', text:'审批未通过', img: require('../../assets/img/yhl.png'), color: '#D4D4D4'},
-                        {id: '9', text:'已忽略', img: require('../../assets/img/yhl.png'), color: '#D4D4D4'},
+                        {id: '4', text:'已验收', img: require('../../assets/img/yys.png'), color: '#4FA69E', router: 'ServiceDetails'},
+                        {id: '7', text:'审批未通过', img: require('../../assets/img/yhl.png'), color: '#D4D4D4', router: 'ServiceDetails'},
+                        {id: '9', text:'已忽略', img: require('../../assets/img/yhl.png'), color: '#D4D4D4', router: 'ServiceDetails'},
                     ]"/>
                 </van-tab>
             </van-tabs>
