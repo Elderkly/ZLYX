@@ -57,7 +57,8 @@
                     }
                     this.$store.commit('SET_USER_INFO', userInfo)
                     localStorage.setItem('userInfo',JSON.stringify(userInfo))
-                    this.$router.replace('/' + location.search)
+                    const router = location.href.indexOf('code') !== -1 ? `/?code=${location.hash.split('code=')[1]}` : '/'
+                    this.$router.replace(router)
                     window.scrollTo(0,0)
                 }
             },

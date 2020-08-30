@@ -175,7 +175,8 @@ const _Router = new Router({
 
 _Router.beforeEach((to, from, next) => {
     if (!localStorage.getItem('userInfo') && to.path.indexOf('login') === -1) {
-        return next('/login')
+        const router = location.href.indexOf('code') !== -1 ? `/login?code=${location.hash.split('code=')[1]}` : '/login'
+        return next(router)
     } else {
         return next()
     }
