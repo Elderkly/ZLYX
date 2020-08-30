@@ -11,8 +11,8 @@
                 <Field title="配件费用" :text="JC[0].PartsFee" type="text"/>
                 <Field title="维修费用" :text="JC[0].RepairFee" type="text"/>
                 <Field title="合计费用" :text="Number(JC[0].PartsFee) + Number(JC[0].RepairFee)" type="text"/>
-                <Field title="维修厂家" :text="!!JC[0].RepairFactory ? JC[0].RepairFactory : '请输入'" @onMessage="value => JC[0].RepairFactory = value"/>
-                <Field title="维修类型" :text="!!JC[0].RepairMarkName ? JC[0].RepairMarkName : '点击选择维修类型'" type='popup' :data="['自修', '第三方维修','原厂','报修']" @onMessage="value => JC[0].RepairMarkName = value"/>
+                <Field title="维修厂家" placeholder="请输入" :text="!!JC[0].RepairFactory ? JC[0].RepairFactory : ''" @onMessage="value => JC[0].RepairFactory = value"/>
+                <Field title="维修类型" placeholder="点击选择维修类型" :text="!!JC[0].RepairMarkName ? JC[0].RepairMarkName : ''" type='popup' :data="['自修', '第三方维修','原厂','报修']" @onMessage="value => JC[0].RepairMarkName = value"/>
             </div>
             <div class="infoBox record">
                 <p class="title">维修记录</p>

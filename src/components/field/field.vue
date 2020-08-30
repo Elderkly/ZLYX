@@ -3,7 +3,7 @@
         <span class="title">{{title}} <span v-if="action">*</span></span>
         <span v-if="type === 'text'">{{text}}</span>
         <!--弹窗-->
-        <div v-if="type === 'popup' || type=== 'calendar'" class="popup" @click="showDiaLog = true">
+        <div v-if="type === 'popup' || type=== 'calendar'" :class="placeholder === showText ? 'popup' : 'action popup'" @click="showDiaLog = true">
             {{showText}}
             <img src="../../assets/img/right-min.png"/>
         </div>
@@ -21,9 +21,9 @@
             />
         </van-popup>
         <!--输入框-->
-        <input v-if="type === 'input'" :type="inputType" :placeholder="text" @input="input"/>
+        <input v-if="type === 'input'" :type="inputType" :placeholder="placeholder" @input="input" :value="text"/>
         <!--日历-->
-        <van-calendar v-if="type === 'calendar'" v-model="showDiaLog" @confirm="onConfirm" />
+        <van-calendar v-if="type === 'calendar'" v-model="showDiaLog" @confirm="onConfirm"/>
     </div>
 </template>
 
@@ -49,7 +49,8 @@
             inputType: {
                 type: String,
                 default: 'text'
-            }
+            },
+            placeholder: String
         },
         data() {
             return {
@@ -58,7 +59,7 @@
                 //  弹窗记录选择项
                 renderData: null,
                 //  用于弹窗或日期选择器 需要更改显示文本的场景
-                showText: this.text
+                showText: !!this.text ? this.text : this.placeholder
             }
         },
         methods: {
@@ -101,7 +102,7 @@
         display: flex;
         align-items: center;
         font-size: 29px;
-        color: #858585;
+        color: $TEXT-DARK-COLOR;
         .title{
             font-size: 30px;
             color: $TEXT-DARK-COLOR;
@@ -126,6 +127,7 @@
         .popup{
             display: flex;
             align-items: center;
+            color: #858585;
             img{
                 width: 32px;
                 height: 30px;
@@ -139,6 +141,9 @@
             &::-webkit-input-placeholder{
                 color: #858585;
             }
+        }
+        .action{
+            color: $TEXT-DARK-COLOR;
         }
     }
 </style>

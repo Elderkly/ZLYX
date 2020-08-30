@@ -1,5 +1,5 @@
 <template>
-    <div id="app" :style="`min-height: calc(${showTabbar ? '100vh - 50px' : '100vh'})`">
+    <div id="app" :style="`height: calc(${showTabbar ? '100vh - 50px' : '100vh'})`">
         <keep-alive>
             <router-view/>
         </keep-alive>

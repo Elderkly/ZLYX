@@ -1,139 +1,204 @@
 <template>
     <Box title="设备借用明细">
-        <div class="menu">
+        <van-list
+            v-model="loading"
+            :finished="finished"
+            finished-text="没有更多了"
+            @load="onLoad"
+        >
+            <div class="menu">
+                <div class="items">
+                    <span>设备名称</span>
+                    <input type="text" placeholder="请输入设备名称" v-model="name">
+                </div>
+                <div class="items">
+                    <span>规格型号</span>
+                    <input type="text" placeholder="请输入规格型号" v-model="model">
+                </div>
+                <div class="search" @click="serach">查询</div>
+            </div>
             <div class="items">
-                <span>设备名称</span>
-                <input type="text" placeholder="请输入设备名称" v-model="name">
+                <div>
+                    <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
+                    <div>
+                        <p class="ellipsis">半导体激光手术刀123123123123123123</p>
+                        <div>
+                            <div>
+                                <p>资产编号：</p>
+                                <p>资产序列号：</p>
+                                <p>设备型号：</p>
+                                <p>存放地点：</p>
+                            </div>
+                            <div>
+                                <p class="ellipsis">1000280002312312</p>
+                                <p class="ellipsis">DK01CFU43123123</p>
+                                <p class="ellipsis">HOP-100123123123</p>
+                                <p class="ellipsis">医学院工程部123123</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div @click="jump">申请借用</div>
+                </div>
+                <div>
+                    <span>启用日期</span>
+                    <span>2019-04-15</span>
+                </div>
             </div>
             <div class="items">
-                <span>规格型号</span>
-                <input type="text" placeholder="请输入规格型号" v-model="model">
-            </div>
-            <div class="search" @click="serach">查询</div>
-        </div>
-        <div class="items">
-            <div>
-                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
                 <div>
-                    <p class="ellipsis">半导体激光手术刀123123123123123123</p>
+                    <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
                     <div>
+                        <p>半导体激光手术刀</p>
                         <div>
-                            <p>资产编号：</p>
-                            <p>资产序列号：</p>
-                            <p>设备型号：</p>
-                            <p>存放地点：</p>
-                        </div>
-                        <div>
-                            <p class="ellipsis">1000280002312312</p>
-                            <p class="ellipsis">DK01CFU43123123</p>
-                            <p class="ellipsis">HOP-100123123123</p>
-                            <p class="ellipsis">医学院工程部123123</p>
+                            <div>
+                                <p>资产编号：</p>
+                                <p>资产序列号：</p>
+                                <p>设备型号：</p>
+                                <p>存放地点：</p>
+                            </div>
+                            <div>
+                                <p>100028000</p>
+                                <p>DK01CFU4</p>
+                                <p>HOP-100</p>
+                                <p>医学院工程部</p>
+                            </div>
                         </div>
                     </div>
+                    <div>申请借用</div>
                 </div>
-                <div @click="jump">申请借用</div>
-            </div>
-            <div>
-                <span>启用日期</span>
-                <span>2019-04-15</span>
-            </div>
-        </div>
-        <div class="items">
-            <div>
-                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
                 <div>
-                    <p>半导体激光手术刀</p>
+                    <span>启用日期</span>
+                    <span>2019-04-15</span>
+                </div>
+            </div>
+            <div class="items">
+                <div>
+                    <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
                     <div>
+                        <p>半导体激光手术刀</p>
                         <div>
-                            <p>资产编号：</p>
-                            <p>资产序列号：</p>
-                            <p>设备型号：</p>
-                            <p>存放地点：</p>
-                        </div>
-                        <div>
-                            <p>100028000</p>
-                            <p>DK01CFU4</p>
-                            <p>HOP-100</p>
-                            <p>医学院工程部</p>
+                            <div>
+                                <p>资产编号：</p>
+                                <p>资产序列号：</p>
+                                <p>设备型号：</p>
+                                <p>存放地点：</p>
+                            </div>
+                            <div>
+                                <p>100028000</p>
+                                <p>DK01CFU4</p>
+                                <p>HOP-100</p>
+                                <p>医学院工程部</p>
+                            </div>
                         </div>
                     </div>
+                    <div>申请借用</div>
                 </div>
-                <div>申请借用</div>
-            </div>
-            <div>
-                <span>启用日期</span>
-                <span>2019-04-15</span>
-            </div>
-        </div>
-        <div class="items">
-            <div>
-                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
                 <div>
-                    <p>半导体激光手术刀</p>
+                    <span>启用日期</span>
+                    <span>2019-04-15</span>
+                </div>
+            </div>
+            <div class="items">
+                <div>
+                    <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
                     <div>
+                        <p>半导体激光手术刀</p>
                         <div>
-                            <p>资产编号：</p>
-                            <p>资产序列号：</p>
-                            <p>设备型号：</p>
-                            <p>存放地点：</p>
-                        </div>
-                        <div>
-                            <p>100028000</p>
-                            <p>DK01CFU4</p>
-                            <p>HOP-100</p>
-                            <p>医学院工程部</p>
+                            <div>
+                                <p>资产编号：</p>
+                                <p>资产序列号：</p>
+                                <p>设备型号：</p>
+                                <p>存放地点：</p>
+                            </div>
+                            <div>
+                                <p>100028000</p>
+                                <p>DK01CFU4</p>
+                                <p>HOP-100</p>
+                                <p>医学院工程部</p>
+                            </div>
                         </div>
                     </div>
+                    <div @click="jump">申请借用</div>
                 </div>
-                <div>申请借用</div>
-            </div>
-            <div>
-                <span>启用日期</span>
-                <span>2019-04-15</span>
-            </div>
-        </div>
-        <div class="items">
-            <div>
-                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
                 <div>
-                    <p>半导体激光手术刀</p>
+                    <span>启用日期</span>
+                    <span>2019-04-15</span>
+                </div>
+            </div>
+            <div class="items">
+                <div>
+                    <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
                     <div>
+                        <p>半导体激光手术刀</p>
                         <div>
-                            <p>资产编号：</p>
-                            <p>资产序列号：</p>
-                            <p>设备型号：</p>
-                            <p>存放地点：</p>
-                        </div>
-                        <div>
-                            <p>100028000</p>
-                            <p>DK01CFU4</p>
-                            <p>HOP-100</p>
-                            <p>医学院工程部</p>
+                            <div>
+                                <p>资产编号：</p>
+                                <p>资产序列号：</p>
+                                <p>设备型号：</p>
+                                <p>存放地点：</p>
+                            </div>
+                            <div>
+                                <p>100028000</p>
+                                <p>DK01CFU4</p>
+                                <p>HOP-100</p>
+                                <p>医学院工程部</p>
+                            </div>
                         </div>
                     </div>
+                    <div>申请借用</div>
                 </div>
-                <div @click="jump">申请借用</div>
+                <div>
+                    <span>启用日期</span>
+                    <span>2019-04-15</span>
+                </div>
             </div>
-            <div>
-                <span>启用日期</span>
-                <span>2019-04-15</span>
+            <div class="items">
+                <div>
+                    <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
+                    <div>
+                        <p>半导体激光手术刀</p>
+                        <div>
+                            <div>
+                                <p>资产编号：</p>
+                                <p>资产序列号：</p>
+                                <p>设备型号：</p>
+                                <p>存放地点：</p>
+                            </div>
+                            <div>
+                                <p>100028000</p>
+                                <p>DK01CFU4</p>
+                                <p>HOP-100</p>
+                                <p>医学院工程部</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>申请借用</div>
+                </div>
+                <div>
+                    <span>启用日期</span>
+                    <span>2019-04-15</span>
+                </div>
             </div>
-        </div>
+        </van-list>
     </Box>
 </template>
 
 <script>
+    import {List} from 'vant'
     import Box from '@/components/commonBox/commonBox'
     export default {
         name: 'BorrowList',
         data() {
-          return {
-              name: null,
-              model: null
-          }
+            return {
+                name: null,
+                model: null,
+                loading: false,
+                finished: false,
+            }
         },
         components: {
-            Box
+            Box,
+            [List.name]: List
         },
         methods: {
             serach() {
@@ -141,6 +206,12 @@
             },
             jump() {
                 this.$router.push('/borrowDetails')
+            },
+            onLoad() {
+                setTimeout(() => {
+                    this.loading = false
+                    this.finished = true
+                },1000)
             }
         }
     }

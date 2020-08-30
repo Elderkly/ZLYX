@@ -36,12 +36,12 @@
             </div>
             <div class="borrow box">
                 <p class="title">借用信息</p>
-                <Field title="申请科室" text="请选择科室" type='popup' :action="true" :data="['医学院工程部', '总务资产库','信息中心库']" @onMessage="onMessage(arguments[0], 'administrative')"/>
+                <Field title="申请科室" placeholder="请选择科室" type='popup' :action="true" :data="['医学院工程部', '总务资产库','信息中心库']" @onMessage="onMessage(arguments[0], 'administrative')"/>
                 <Field title="申请人" :text="borrow.userName"  @onMessage="onMessage(arguments[0], 'userName')"/>
                 <Field title="申请日期" :text="`${new Date().getFullYear()}-${new Date().getMonth() < 9 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1}-${new Date().getDate() < 9 ? '0' + new Date().getDate() : new Date().getDate()}`" type="text" @onMessage="onMessage(arguments[0], 'startTime')"/>
-                <Field title="使用日期" text="请选择日期" type='calendar' :action="true" @onMessage="onMessage(arguments[0], 'startTime')"/>
+                <Field title="使用日期" placeholder="请选择日期" type='calendar' :action="true" @onMessage="onMessage(arguments[0], 'startTime')"/>
                 <Field title="联系电话" :text="borrow.phone" type="text"/>
-                <Field title="预计归还日期" text="请选择日期" type="calendar" @onMessage="onMessage(arguments[0], 'endTime')"/>
+                <Field title="预计归还日期" placeholder="请选择日期" type="calendar" @onMessage="onMessage(arguments[0], 'endTime')"/>
                 <Field title="借用单位" :text="borrow.unit" type="text"/>
             </div>
             <div class="explain box">

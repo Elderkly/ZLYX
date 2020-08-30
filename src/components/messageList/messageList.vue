@@ -343,7 +343,9 @@
             onLoad() {
                 setTimeout(() => {
                     this.loading = false
-                    this.finished = true
+                    // this.finished = true
+                    console.log(123123)
+                    this.NoticeList.push({"Id":758,"OrderNo":"202008250003","TypeId":"1","EquId":"06090300002","EquName":"1.5T核磁共振系统","StoreId":"0101","DepartmentId":"4015","DepartmentName":"X线诊断一诊室(放射线科）","RepairUserCode":"taotao","RepairUserName":"涛涛    ","RepairDate":"2020-08-25","UserCode":"taotao","HandleUserName":"涛涛    ","State":"6","IsRead":0})
                 },1000)
             },
             //  日历

@@ -12,6 +12,8 @@ import BorrowList from '@/page/borrowList/borrowList'
 import BorrowDetails from '@/page/borrowDetails/borrowDetails'
 //  归还
 import GiveBack from '@/page/giveBack/giveBack'
+//  资产查询
+import PropertySearch from '../page/propertySearch/propertySearch'
 
 //  消息
 import Message from '@/page/message/message'
@@ -141,6 +143,11 @@ const _Router = new Router({
             path: '/serviceDetails',
             name: 'ServiceDetails',
             component: ServiceDetails
+        },
+        {
+            path: '/propertySearch',
+            name: 'PropertySearch',
+            component: PropertySearch
         },
     ]
 })

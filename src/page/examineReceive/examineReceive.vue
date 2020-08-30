@@ -21,8 +21,8 @@
                     <div :class="repair ? 'action' : ''" @click="repair = true">已修复</div>
                     <div :class="!repair ? 'action' : ''" @click="repair = false">未修复</div>
                 </div>
-                <Field title="停机时间" text="请输入时间(小时)" inputType="number" @onMessage="value => this.downtime = value"/>
-                <Field title="验收建议" text="请输入" @onMessage="value => this.suggest = value"/>
+                <Field title="停机时间" placeholder="请输入时间(小时)" inputType="number" @onMessage="value => this.downtime = value"/>
+                <Field title="验收建议" placeholder="请输入" @onMessage="value => this.suggest = value"/>
             </div>
         </Box>
         <Footer button="验收" @change="change"/>
