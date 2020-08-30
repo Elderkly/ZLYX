@@ -14,7 +14,7 @@
                 <div class="search" @click="serach">查询</div>
             </div>
             <p class="listLength">共计 <span>{{list.length}}条</span></p>
-            <div class="items" v-for="item in list">
+            <div class="items" v-for="item in list" @click="$router.push({name: 'PropertyDetails', params: {item} })">
                 <div>
                     <img :src="item.Img"/>
                     <div>
@@ -22,15 +22,13 @@
                         <div>
                             <div>
                                 <p>资产编号：</p>
-                                <p>资产序列号：</p>
                                 <p>设备型号：</p>
-                                <p>存放地点：</p>
+                                <p>使用科室：</p>
                             </div>
                             <div>
                                 <p class="ellipsis">{{item.EquCode}}</p>
-                                <p class="ellipsis">{{item.EquNumber}}</p>
                                 <p class="ellipsis">{{item.EquType}}</p>
-                                <p class="ellipsis">{{item.Address}}</p>
+                                <p class="ellipsis">{{item.DepartmentName}}</p>
                             </div>
                         </div>
                     </div>
@@ -38,7 +36,7 @@
                         <div>
                             <span>{{item.Status}}</span> <img src="../../assets/img/right.png"/>
                         </div>
-                        <div @click="jump">申请借用</div>
+                        <div @click.stop="$router.push({name: 'Repairs', params: {item}})">去报修</div>
                     </div>
                 </div>
                 <div>
@@ -420,9 +418,6 @@
             serach() {
                 alert(JSON.stringify(this.search))
             },
-            jump() {
-                this.$router.push('/borrowDetails')
-            },
             onLoad() {
                 setTimeout(() => {
                     this.loading = false
@@ -469,10 +464,10 @@
         }
     }
     .items{
-        height: 364px;
         background: $BACKGROUND-COLOR;
         border-radius: 16px;
         margin-bottom: 20px;
+        padding-bottom: 20px;
         &>div{
             &:first-child{
                 display: flex;
@@ -528,7 +523,7 @@
                                 }
                             }
                             &:last-child{
-                                margin-left: 35px;
+                                margin-left: 25px;
                                 width: 152px;
                                 height: 61px;
                                 background: $THEME-COLOR;

@@ -7,6 +7,7 @@ import store from './vuex'
 import Vconsole from 'vconsole'
 import './color.scss'
 import './main.scss'
+import './assets/style/vant.scss'
 
 // new Vconsole()
 Vue.config.productionTip = false

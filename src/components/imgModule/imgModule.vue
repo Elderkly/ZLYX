@@ -2,14 +2,24 @@
     <div class="imgModuleBox">
         <p class="title">{{title}}</p>
         <div class="imgBox">
-            <img v-for="(item,index) in img" :src="img" @click="showImg(index)"/>
+            <img v-if="!upload" v-for="(item,index) in img" :src="img" @click="showImg(index)"/>
+            <van-uploader
+                v-if="upload"
+                :after-read="afterRead"
+                v-model="fileList"
+                multiple
+                :max-count="10"
+                :max-size="10240 * 1024"
+                @oversize="onOversize"
+                @delete="_delete"
+            />
         </div>
     </div>
 </template>
 
 <script>
     //  图片展示模块
-    import {ImagePreview} from 'vant'
+    import {ImagePreview, Uploader, Toast} from 'vant'
     export default {
         name: 'ImgModule',
         props: {
@@ -17,7 +27,16 @@
             title: {
                 type: String,
                 default: '图片'
+            },
+            upload: {
+                type: Boolean,
+                default: false
             }
+        },
+        data() {
+          return {
+              fileList: [],
+          }
         },
         methods: {
             showImg(index) {
@@ -25,7 +44,20 @@
                     images: this.img,
                     startPosition: index,
                 })
+            },
+            afterRead(file) {
+                this.$emit('changeImg', this.fileList)
+            },
+            onOversize(file) {
+                console.log(file);
+                Toast('图片大小不能超过 10mb');
+            },
+            _delete() {
+                this.$emit('changeImg', this.fileList)
             }
+        },
+        components: {
+            [Uploader.name]: Uploader
         }
     }
 </script>

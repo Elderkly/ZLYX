@@ -57,7 +57,7 @@
                 //  是否显示弹窗
                 showDiaLog: false,
                 //  弹窗记录选择项
-                renderData: null,
+                renderData: this.type === 'popup' ? this.data[0] : null,
                 //  用于弹窗或日期选择器 需要更改显示文本的场景
                 showText: !!this.text ? this.text : this.placeholder
             }

@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div v-if="!hiddenDepartment" class="hiddenDepartment">
             <div class="ellipsis">使用科室：  {{data.DepartmentName}}</div>
             <div>使用年限：  {{data.deadline}}</div>
         </div>
@@ -30,17 +30,20 @@
     export default {
         name: 'FacilityDetails',
         props: {
-            data: Object
+            data: Object,
+            hiddenDepartment: {
+                type: Boolean,
+                default: false
+            }
         }
     }
 </script>
 
 <style scoped lang="scss">
     .equipment{
-        height: 424px;
         background: $BACKGROUND-COLOR;
         border-radius: 12px;
-        padding: 34px 40px 0;
+        padding: 34px 40px 20px;
         box-sizing: border-box;
         margin-bottom: 20px;
         .title{
@@ -76,7 +79,7 @@
                 }
             }
         }
-        &>div:last-child{
+        .hiddenDepartment{
             display: flex;
             border-top: 2px solid #F3F3F3;
             margin-top: 20px;

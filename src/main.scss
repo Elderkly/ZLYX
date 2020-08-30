@@ -61,37 +61,16 @@ p,span{
         font-weight: bold;
         margin-bottom: 30px;
     }
+    &>textarea,&>input{
+        font-size: 30px;
+        width: 100%;
+        border: none;
+        resize: none;
+        &::-webkit-input-placeholder{
+            color: #858585;
+        }
+    }
 }
-
-
-.van-toast{
-    padding: 20px 40px!important;
-}
-.van-tabbar{
-    background: $BACKGROUND-COLOR;
-}
-.van-tab {
-    color: rgba(255,255,255,.7);
-    font-size: 3.733vw;
-}
-.van-tabs__wrap{
-    position: fixed;
-    top: 12.267vw;
-    background: $THEME-COLOR;
-    width: 94vw;
-    padding: 0 3vw;
-    z-index: 10;
-    left: 0;
-    height: 15vw!important;
-}
-.van-tab--active{
-    color: $TEXT-LIGHT-COLOR;
-    font-size: 4.533vw;
-}
-.van-pull-refresh__head,.van-pull-refresh__head span{
-    color: $TEXT-LIGHT-COLOR;
-}
-
 .picker-header{
     height: 114px;
     width: 711px;

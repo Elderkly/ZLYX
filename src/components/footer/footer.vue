@@ -25,7 +25,7 @@
         height: 114px;
         background: $BACKGROUND-COLOR;
         box-shadow:0px 6px 12px rgba(0,0,0,0.16);
-        padding-top: 24px;
+        padding: 20px 0;
         display: flex;
         justify-content: center;
         .onlyButton{

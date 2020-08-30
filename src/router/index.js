@@ -14,6 +14,12 @@ import BorrowDetails from '@/page/borrowDetails/borrowDetails'
 import GiveBack from '@/page/giveBack/giveBack'
 //  资产查询
 import PropertySearch from '../page/propertySearch/propertySearch'
+//  资产详细
+import PropertyDetails from '../page/propertyDetails/propertyDetails'
+//  报修
+import Repairs from '../page/repairs/repairs'
+//  搜索问题
+import QuestionSearch from '../page/questionSearch/questionSearch'
 
 //  消息
 import Message from '@/page/message/message'
@@ -148,6 +154,21 @@ const _Router = new Router({
             path: '/propertySearch',
             name: 'PropertySearch',
             component: PropertySearch
+        },
+        {
+            path: '/propertyDetails',
+            name: 'PropertyDetails',
+            component: PropertyDetails
+        },
+        {
+            path: '/repairs',
+            name: 'Repairs',
+            component: Repairs
+        },
+        {
+            path: '/questionSearch',
+            name: 'QuestionSearch',
+            component: QuestionSearch
         },
     ]
 })
