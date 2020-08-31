@@ -1,9 +1,8 @@
 <template>
     <Box title="设备借用明细">
-        <van-list
+        <LoadingFooter
             v-model="loading"
             :finished="finished"
-            finished-text="没有更多了"
             @load="onLoad"
         >
             <div class="menu">
@@ -179,12 +178,12 @@
                     <span>2019-04-15</span>
                 </div>
             </div>
-        </van-list>
+        </LoadingFooter>
     </Box>
 </template>
 
 <script>
-    import {List} from 'vant'
+    import LoadingFooter from '../../components/loadingFooter/loadingFooter'
     import Box from '@/components/commonBox/commonBox'
     export default {
         name: 'BorrowList',
@@ -198,7 +197,7 @@
         },
         components: {
             Box,
-            [List.name]: List
+            LoadingFooter
         },
         methods: {
             serach() {

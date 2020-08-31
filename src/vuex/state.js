@@ -2,7 +2,8 @@ const state = {
     userInfo: {
 
     },
-    showTabbar: true
+    showTabbar: true,
+    tabsIndex: 0
 }
 
 export default state

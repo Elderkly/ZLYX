@@ -16,11 +16,12 @@
             </div>
         </div>
         <p class="dataLength">全部消息<span>{{NoticeList.length}}条</span></p>
-        <van-list
+        <LoadingFooter
             v-model="loading"
             :finished="finished"
-            finished-text="没有更多了"
             @load="onLoad"
+            :action="action"
+            :isTags="true"
         >
             <div class="items" v-for="item in NoticeList" @click="config[config.findIndex(e => e.id === item.State)].router && $router.push({ name: config[config.findIndex(e => e.id === item.State)].router, params: {item}})">
                 <img :src="config[config.findIndex(e => e.id === item.State)] && config[config.findIndex(e => e.id === item.State)].img">
@@ -38,13 +39,14 @@
                 </div>
             </div>
             <van-calendar v-model="showCalendar" @confirm="onConfirm" />
-        </van-list>
+        </LoadingFooter>
     </div>
 </template>
 
 <script>
     //  消息列表模块
-    import {Calendar, List} from 'vant'
+    import {Calendar} from 'vant'
+    import LoadingFooter from '../../components/loadingFooter/loadingFooter'
     export default {
         name: 'MessageList',
         data() {
@@ -68,12 +70,13 @@
             config: {           //  每个标签页对应的配置
                 type: Array,
                 default: []
-            }
+            },
+            action: Boolean,    //  当前tag是否聚焦
 
         },
         components: {
+            LoadingFooter,
             [Calendar.name]: Calendar,
-            [List.name]: List
         },
         mounted() {
             //  假数据
@@ -343,9 +346,9 @@
             onLoad() {
                 setTimeout(() => {
                     this.loading = false
-                    // this.finished = true
-                    console.log(123123)
-                    this.NoticeList.push({"Id":758,"OrderNo":"202008250003","TypeId":"1","EquId":"06090300002","EquName":"1.5T核磁共振系统","StoreId":"0101","DepartmentId":"4015","DepartmentName":"X线诊断一诊室(放射线科）","RepairUserCode":"taotao","RepairUserName":"涛涛    ","RepairDate":"2020-08-25","UserCode":"taotao","HandleUserName":"涛涛    ","State":"6","IsRead":0})
+                    this.finished = (this.$store.getters.tabsIndex + 1) !== 1
+                    console.log('刷新',this.finished,this.$store.getters.tabsIndex + 1)
+                    this.State === '1' && this.NoticeList.push({"Id":758,"OrderNo":"202008250003","TypeId":"1","EquId":"06090300002","EquName":"1.5T核磁共振系统","StoreId":"0101","DepartmentId":"4015","DepartmentName":"X线诊断一诊室(放射线科）","RepairUserCode":"taotao","RepairUserName":"涛涛    ","RepairDate":"2020-08-25","UserCode":"taotao","HandleUserName":"涛涛    ","State":"6","IsRead":0})
                 },1000)
             },
             //  日历

@@ -1,9 +1,8 @@
 <template>
     <Box title="资产查询">
-        <van-list
+        <LoadingFooter
             v-model="loading"
             :finished="finished"
-            finished-text="没有更多了"
             @load="onLoad"
         >
             <div class="menu">
@@ -44,14 +43,14 @@
                     <span>2019-04-15</span>
                 </div>
             </div>
-        </van-list>
+        </LoadingFooter>
     </Box>
 </template>
 
 <script>
     import Box from '@/components/commonBox/commonBox'
-    import {List} from 'vant'
     import Field from '../../components/field/field'
+    import LoadingFooter from '../../components/loadingFooter/loadingFooter'
     export default {
         name: 'PropertySearch',
         data() {
@@ -412,7 +411,7 @@
         components: {
             Box,
             Field,
-            [List.name]: List
+            LoadingFooter
         },
         methods: {
             serach() {
@@ -420,8 +419,47 @@
             },
             onLoad() {
                 setTimeout(() => {
+                    console.log('Box触底')
                     this.loading = false
-                    this.finished = true
+                    this.list.push({
+                        "EquCode": "01020100013",
+                        "EquName": "半导体激光手术刀",
+                        "EquType": "HOP-100",
+                        "EquUnit": "台",
+                        "EquNumber": "",
+                        "Number": "",
+                        "DepartmentId": "1001  ",
+                        "DepartmentName": "宣传处",
+                        "FinanceName": "0101",
+                        "FinanceClass": "设备类",
+                        "AccountingId": "0102",
+                        "EquClassify": "激光手术设备及附件",
+                        "IsAnalysis": "否",
+                        "IsMetering": "否",
+                        "StartDate": "2019-07-17",
+                        "ContractPrice": "1.0000",
+                        "Depreciation": "0.0000",
+                        "NetValue": "1.0000",
+                        "EstimateDate": "5",
+                        "BrandId": "000028",
+                        "BrandName": "",
+                        "CountriesId": "0009",
+                        "CountriesName": "墨西哥",
+                        "OriginId": "000009",
+                        "OriginName": "山东",
+                        "SupplierId": "000923",
+                        "SupplierName": "",
+                        "FactoryId": "000923",
+                        "FactoryName": "",
+                        "StatuId": "1",
+                        "Status": "在用",
+                        "DirectorName": "涛涛    ",
+                        "KSFZR": "taotao  ",
+                        'Img': "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg",
+                        Address: '存放地址'
+                    })
+                    //  数据是否加载完毕
+                    // this.finished = true
                 },1000)
             }
         }

@@ -1,2 +1,2 @@
 export const SET_USER_INFO = 'SET_USER_INFO'
-export const SET_SHOW_TABBAR = 'SET_SHOW_TABBAR'
+export const SET_TABS_INDEX = 'SET_TABS_INDEX'
