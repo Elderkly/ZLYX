@@ -71,6 +71,96 @@ p,span{
         }
     }
 }
+.commonItems{
+    background: $BACKGROUND-COLOR;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    &>div{
+        &:first-child{
+            display: flex;
+            padding: 34px 16px 27px 26px;
+            box-sizing: border-box;
+            border-bottom: 2px solid #EFEFEF;
+            img {
+                width: 150px;
+                height: 192px;
+                border-radius: 4px;
+            }
+            &>div {
+                &:nth-child(2){
+                    margin-left: 16px;
+                    &>p {
+                        color: $TEXT-DARK-COLOR;
+                        font-weight: bold;
+                        font-size: 32px;
+                        margin-bottom: 18px;
+                        width: 330px;
+                        display: flex;
+                    }
+                    &>div{
+                        display: flex;
+                        p{
+                            color: #999;
+                            font-size: 26px;
+                            line-height: 45px;
+                            height: 45px;
+                        }
+                        &>div{
+                            &:last-child{
+                                p{
+                                    width: 170px;
+                                }
+                            }
+                        }
+                    }
+                }
+                &:last-child{
+                    &>div{
+                        &:first-child{
+                            color: $TEXT-DARK-COLOR;
+                            font-size: 26px;
+                            display: flex;
+                            justify-content: center;
+                            span{
+                                margin-left: 70px;
+                            }
+                            img{
+                                width: 32px;
+                                height: 32px;
+                            }
+                        }
+                        &:last-child{
+                            margin-left: 25px;
+                            width: 152px;
+                            height: 61px;
+                            background: $THEME-COLOR;
+                            border-radius: 30px;
+                            text-align: center;
+                            line-height: 61px;
+                            font-size: 26px;
+                            color: $TEXT-LIGHT-COLOR;
+                            margin-top: 82px;
+                        }
+                    }
+                }
+            }
+        }
+        &:last-child{
+            margin-top: 16px;
+            padding: 0 26px 0 31px;
+            box-sizing: border-box;
+            display: flex;
+            span{
+                color: #999;
+                font-size: 26px;
+                &:first-child {
+                    flex: 1
+                }
+            }
+        }
+    }
+}
 .picker-header{
     height: 114px;
     width: 711px;

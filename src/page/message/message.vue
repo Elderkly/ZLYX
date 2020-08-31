@@ -1,5 +1,5 @@
 <template>
-    <Box title="众联医修" right-button="search">
+    <Box title="众联医修" right-button="search" left-button="">
         <div class="message-content">
             <van-tabs
                 swipeable

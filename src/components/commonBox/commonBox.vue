@@ -1,7 +1,7 @@
 <template>
     <div class="commonBox" :style="{minHeight: $store.getters.showTabbar ? 'calc(100vh - 50px)' : '100vh'}">
         <div class="header">
-            <img src="../../assets/img/left.png" @click="back" v-if="!rightButton">
+            <img src="../../assets/img/left.png" @click="back" v-if="leftButton">
             <p>{{title}}</p>
             <div v-if="rightButton === 'search'" class="search">
                 <img src="../../assets/img/search.png">
@@ -25,6 +25,10 @@
             rightButton: {
                 type: String,
                 default: null
+            },
+            leftButton: {
+                type: String,
+                default: 'back'
             }
         },
         methods: {

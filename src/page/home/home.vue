@@ -35,7 +35,7 @@
                 list: [
                     //  name 文本 icon图标 url跳转链接
                     { name: '资产查询', icon: require('../../assets/img/property.png'), url: '/propertySearch'},
-                    { name: '科室报修', icon: require('../../assets/img/wrench.png'), url: ''},
+                    { name: '科室报修', icon: require('../../assets/img/wrench.png'), url: '/repairsList'},
                     { name: '维修管理', icon: require('../../assets/img/manage.png'), url: ''},
                     { name: '我的审批', icon: require('../../assets/img/judge.png'), url: ''},
                     { name: '资产档案', icon: require('../../assets/img/record.png'), url: ''},

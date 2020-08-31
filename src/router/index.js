@@ -20,6 +20,8 @@ import PropertyDetails from '../page/propertyDetails/propertyDetails'
 import Repairs from '../page/repairs/repairs'
 //  搜索问题
 import QuestionSearch from '../page/questionSearch/questionSearch'
+//  科室报修
+import RepairsList from '../page/repairsList/repairsList'
 
 //  消息
 import Message from '@/page/message/message'
@@ -169,6 +171,11 @@ const _Router = new Router({
             path: '/questionSearch',
             name: 'QuestionSearch',
             component: QuestionSearch
+        },
+        {
+            path: '/repairsList',
+            name: 'RepairsList',
+            component: RepairsList
         },
     ]
 })

@@ -22,6 +22,15 @@
     color: $TEXT-LIGHT-COLOR;
     font-size: 4.533vw;
 }
+.van-tabs__line {
+    position: absolute;
+    bottom: 23px;
+    left: 0;
+    z-index: 1;
+    height: 3px;
+    background-color: $BACKGROUND-COLOR;
+    border-radius: 3px;
+}
 .van-pull-refresh__head,.van-pull-refresh__head span{
     color: $TEXT-LIGHT-COLOR;
 }
