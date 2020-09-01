@@ -37,7 +37,7 @@
                     { name: '资产查询', icon: require('../../assets/img/property.png'), url: '/propertySearch'},
                     { name: '科室报修', icon: require('../../assets/img/wrench.png'), url: '/repairsList'},
                     { name: '维修管理', icon: require('../../assets/img/manage.png'), url: '/maintenanceManagement'},
-                    { name: '我的审批', icon: require('../../assets/img/judge.png'), url: ''},
+                    { name: '我的审批', icon: require('../../assets/img/judge.png'), url: '/examineList'},
                     { name: '资产档案', icon: require('../../assets/img/record.png'), url: ''},
                     { name: '资产转科', icon: require('../../assets/img/shift.png'), url: ''},
                     { name: '资产报废', icon: require('../../assets/img/scrap.png'), url: ''},

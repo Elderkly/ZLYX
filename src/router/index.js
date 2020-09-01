@@ -36,6 +36,8 @@ import OrderReceivingList from '../page/orderReceivingList/orderReceivingList'
 import ExamineReceiveList from '../page/examineReceiveList/examineReceiveList'
 //  维修列表
 import ServiceList from '../page/serviceList/serviceList'
+//  我的审批
+import ExamineList from '../page/examineList/examineList'
 
 //  消息
 import Message from '@/page/message/message'
@@ -225,6 +227,11 @@ const _Router = new Router({
             path: '/serviceList',
             name: 'ServiceList',
             component: ServiceList
+        },
+        {
+            path: '/examineList',
+            name: 'ExamineList',
+            component: ExamineList
         },
     ]
 })
