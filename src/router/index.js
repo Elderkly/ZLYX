@@ -95,7 +95,7 @@ const _Router = new Router({
         {
             path: '/message',
             name: 'Message',
-            component: Message
+            component: Message,
         },
         {
             path: '/setting',
@@ -245,7 +245,10 @@ const _Router = new Router({
         {
             path: '/propertyUploadImg',
             name: 'PropertyUploadImg',
-            component: PropertyUploadImg
+            component: PropertyUploadImg,
+            meta: {
+                notAlive: true // 不需要缓存
+            }
         },
     ]
 })

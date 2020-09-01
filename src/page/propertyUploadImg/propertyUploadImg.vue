@@ -53,12 +53,16 @@
                     this.type,
                     this.uploadImg
                 )
+                this.type = null
+                this.uploadImg = []
             }
         },
         watch: {
             $route(to, from) {
                 if (from.name === 'PropertyRecord') {
                     this.type = null
+                    this.uploadImg = null
+                    console.log('清空')
                     this.data = this.$route.params.item ? this.$route.params.item : {}
                 }
             }

@@ -1,8 +1,9 @@
 <template>
     <div id="app" :style="`min-height: calc(${showTabbar ? '100vh - 50px' : '100vh'})`">
         <keep-alive>
-            <router-view/>
+            <router-view v-if="!$route.meta.notAlive"/>
         </keep-alive>
+        <router-view v-if="$route.meta.notAlive"/>
         <Tabbar v-if="showTabbar"/>
     </div>
 </template>
