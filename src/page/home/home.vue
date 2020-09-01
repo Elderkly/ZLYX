@@ -41,7 +41,7 @@
                     { name: '资产档案', icon: require('../../assets/img/record.png'), url: '/propertyRecord'},
                     { name: '资产转科', icon: require('../../assets/img/shift.png'), url: '/changeDepartmentList'},
                     { name: '资产报废', icon: require('../../assets/img/scrap.png'), url: '/scrapList'},
-                    { name: '合同附件', icon: require('../../assets/img/accessory.png'), url: ''},
+                    { name: '合同附件', icon: require('../../assets/img/accessory.png'), url: '/accessoryList'},
                     { name: '维修进度', icon: require('../../assets/img/schedule.png'), url: ''},
                     { name: '预防维护', icon: require('../../assets/img/maintain.png'), url: ''},
                     { name: '设备申购', icon: require('../../assets/img/subscribe.png'), url: ''},

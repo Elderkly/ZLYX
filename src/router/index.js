@@ -50,6 +50,10 @@ import ScrapList from '../page/scrapList/scrapList'
 import ChangeDepartment from '../page/changeDepartment/changeDepartment'
 //  资产转科列表
 import ChangeDepartmentList from '../page/changeDepartmentList/changeDepartmentList'
+//  合同附件
+import Accessory from '../page/accessory/accessory'
+//  合同附件列表
+import AccessoryList from '../page/accessoryList/accessoryList'
 
 //  消息
 import Message from '@/page/message/message'
@@ -274,6 +278,16 @@ const _Router = new Router({
             path: '/changeDepartmentList',
             name: 'ChangeDepartmentList',
             component: ChangeDepartmentList,
+        },
+        {
+            path: '/accessory',
+            name: 'Accessory',
+            component: Accessory,
+        },
+        {
+            path: '/accessoryList',
+            name: 'AccessoryList',
+            component: AccessoryList,
         },
     ]
 })
