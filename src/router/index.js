@@ -30,6 +30,8 @@ import DispatchList from '../page/dispatchList/dispatchList'
 import TransferOrderList from '../page/transferOrderList/transferOrderList'
 //  转单
 import TransferOrder from '../page/transferOrder/transferOrder'
+//  接单列表
+import OrderReceivingList from '../page/orderReceivingList/orderReceivingList'
 
 //  消息
 import Message from '@/page/message/message'
@@ -204,6 +206,11 @@ const _Router = new Router({
             path: '/transferOrderList',
             name: 'TransferOrderList',
             component: TransferOrderList
+        },
+        {
+            path: '/orderReceivingList',
+            name: 'OrderReceivingList',
+            component: OrderReceivingList
         },
     ]
 })

@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <Box title="接单">
-            <Title text="待接单"/>
+            <Title v-if="!$route.params.hiddenTitle" text="待接单"/>
             <FacilityDetails :data="RepairInfo"/>
             <RepairsDetails :data="RepairInfo"/>
             <ImgModule :img="RepairInfo.CLImages"/>
