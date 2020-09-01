@@ -18,7 +18,7 @@
                     <div>
                         <div>
                             <span class="ellipsis">{{item.SBMX}}</span>
-                            <span>¥ {{item.HTJE}}</span>
+                            <span class="ellipsis">¥ {{item.HTJE}}</span>
                             <img src="../../assets/img/right.png"/>
                         </div>
                         <div>
@@ -248,12 +248,14 @@
                                     font-weight: bold;
                                     font-size: 32px;
                                     flex: 1;
-                                    width: 398px;
+                                    width: 208px;
                                 }
                                 span:nth-child(2) {
                                     color: $TEXT-DARK-COLOR;
                                     font-size: 28px;
                                     margin-left: 10px;
+                                    width: 158px;
+                                    text-align: right;
                                 }
                                 img{
                                     width: 32px;
