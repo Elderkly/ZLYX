@@ -32,6 +32,10 @@ import TransferOrderList from '../page/transferOrderList/transferOrderList'
 import TransferOrder from '../page/transferOrder/transferOrder'
 //  接单列表
 import OrderReceivingList from '../page/orderReceivingList/orderReceivingList'
+//  验收列表
+import ExamineReceiveList from '../page/examineReceiveList/examineReceiveList'
+//  维修列表
+import ServiceList from '../page/serviceList/serviceList'
 
 //  消息
 import Message from '@/page/message/message'
@@ -211,6 +215,16 @@ const _Router = new Router({
             path: '/orderReceivingList',
             name: 'OrderReceivingList',
             component: OrderReceivingList
+        },
+        {
+            path: '/examineReceiveList',
+            name: 'ExamineReceiveList',
+            component: ExamineReceiveList
+        },
+        {
+            path: '/serviceList',
+            name: 'ServiceList',
+            component: ServiceList
         },
     ]
 })

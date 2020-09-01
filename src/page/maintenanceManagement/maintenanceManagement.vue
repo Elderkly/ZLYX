@@ -22,10 +22,10 @@
             return {
                 list: [
                     { text: '派工', img: require('../../assets/img/pg.png'), router: '/dispatchList'},
-                    { text: '转单', img: require('../../assets/img/zd.png'), router: '/TransferOrderList'},
-                    { text: '接单', img: require('../../assets/img/jd.png'), router: '/OrderReceivingList'},
-                    { text: '维修处理', img: require('../../assets/img/wxcl.png'), router: '/'},
-                    { text: '科室验收', img: require('../../assets/img/ksys.png'), router: '/'},
+                    { text: '转单', img: require('../../assets/img/zd.png'), router: '/transferOrderList'},
+                    { text: '接单', img: require('../../assets/img/jd.png'), router: '/orderReceivingList'},
+                    { text: '维修处理', img: require('../../assets/img/wxcl.png'), router: '/serviceList'},
+                    { text: '科室验收', img: require('../../assets/img/ksys.png'), router: '/examineReceiveList'},
                 ]
             }
         }
