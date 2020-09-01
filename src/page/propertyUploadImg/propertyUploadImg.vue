@@ -7,6 +7,8 @@
             EquNo: data.EquCode,
             Size: data.EquType,
             EquNumber: data.EquNumber,
+            DepartmentName: data.DepartmentName,
+            deadline: data.deadline
         }" :hidden-department="true"/>
             <div class="infoBox">
                 <p class="title">档案信息</p>

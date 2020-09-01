@@ -7,6 +7,8 @@
                 EquNo: data.EquCode,
                 Size: data.EquType,
                 EquNumber: data.EquNumber,
+                DepartmentName: data.DepartmentName,
+                deadline: data.deadline
             }"/>
             <div class="infoBox">
                 <p class="title">报修信息</p>

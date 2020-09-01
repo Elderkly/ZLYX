@@ -1,38 +1,43 @@
 <template>
     <div class="Field-Box">
-        <span class="title">{{title}} <span v-if="action">*</span></span>
-        <span v-if="type === 'text'">{{text}}</span>
-        <!--弹窗-->
-        <div v-if="type === 'popup' || type=== 'calendar'" :class="placeholder === showText ? 'popup' : 'action popup'" @click="showDiaLog = true">
-            {{showText}}
-            <img src="../../assets/img/right-min.png"/>
-        </div>
-        <van-popup v-if="type === 'popup'" v-model="showDiaLog" position="bottom" :style="{ height: '50%', borderRadius: '10px 10px 0 0'}">
-            <div class="picker-header">
-                <span @click="showDiaLog = false">取消</span>
-                <span @click="confirm">确定</span>
+        <div>
+            <span class="title">{{title}} <span v-if="action">*</span></span>
+            <span v-if="type === 'text'">{{text}}</span>
+            <!--弹窗-->
+            <div v-if="type === 'popup' || type=== 'calendar' || type === 'selectPeople'" :class="placeholder === showText ? 'popup' : 'action popup'" @click.stop="menuClick">
+                {{showText}}
+                <img src="../../assets/img/right-min.png"/>
             </div>
-            <van-picker
-                :columns="data"
-                @cancel="showPicker = false"
-                @change="onChange"
-                item-height="15vw"
-                swipe-duration="500"
-            />
-        </van-popup>
-        <!--输入框-->
-        <input v-if="type === 'input'" :type="inputType" :placeholder="placeholder" @input="input" :value="text"/>
-        <!--日历-->
-        <van-calendar v-if="type === 'calendar'" v-model="showDiaLog" @confirm="onConfirm"/>
-        <!--tab-->
-        <div class="tab" v-if="type === 'teb'">
-            <div v-for="(item, index) in data" :class="index === tabSelectIndex ? 'actionTab' : ''" @click.stop="tabChange(item, index)">{{item}}</div>
+            <van-popup v-if="type === 'popup'" v-model="showDiaLog" position="bottom" :style="{ height: '50%', borderRadius: '10px 10px 0 0'}">
+                <div class="picker-header">
+                    <span @click="showDiaLog = false">取消</span>
+                    <span @click="confirm">确定</span>
+                </div>
+                <van-picker
+                        :columns="data"
+                        @cancel="showPicker = false"
+                        @change="onChange"
+                        item-height="15vw"
+                        swipe-duration="500"
+                />
+            </van-popup>
+            <!--输入框-->
+            <input v-if="type === 'input'" :type="inputType" :placeholder="placeholder" @input="input" :value="text"/>
+            <!--日历-->
+            <van-calendar v-if="type === 'calendar'" v-model="showDiaLog" @confirm="onConfirm"/>
+            <!--tab-->
+            <div class="tab" v-if="type === 'teb'">
+                <div v-for="(item, index) in data" :class="index === tabSelectIndex ? 'actionTab' : ''" @click="tabChange(item, index)">{{item}}</div>
+            </div>
         </div>
+        <!--textarea-->
+        <textarea v-if="type === 'textarea'" :placeholder="placeholder" cols="3" @input="input"/>
     </div>
 </template>
 
 <script>
     import {Popup, Picker, Calendar } from 'vant'
+    import Bus from "../bus/bus";
     export default {
         name: 'Field',
         props: {
@@ -54,7 +59,8 @@
                 type: String,
                 default: 'text'
             },
-            placeholder: String
+            placeholder: String,
+            listen: Boolean,                //  用于应对一个组件有多个监听的情况下 区分是哪个选项卡的监听
         },
         data() {
             return {
@@ -68,7 +74,28 @@
                 tabSelectIndex: 0
             }
         },
+        mounted() {
+            if (this.type === 'selectPeople') {
+                Bus.$on('selectStaff', item => {
+                    if (this.listen) {
+                        console.log('选中了工程师',item)
+                        this.showText = item.UserName
+                        this.$emit('onMessage', item)
+                    }
+                })
+            }
+        },
         methods: {
+            //  公用点击
+            menuClick() {
+                //  选中工程师
+                if (this.type === 'selectPeople') {
+                    this.$router.push('/staffSearch')
+                    this.$emit('click')
+                } else {
+                    this.showDiaLog = true
+                }
+            },
             //  弹窗滚动
             onChange(picker, value) {
                 this.renderData = value
@@ -108,77 +135,88 @@
 
 <style scoped lang="scss">
     .Field-Box{
-        height: 112px;
         border-bottom: 2px solid #F3F3F3;
-        display: flex;
-        align-items: center;
-        font-size: 29px;
-        color: $TEXT-DARK-COLOR;
-        .title{
-            font-size: 30px;
+        &>div{
+            display: flex;
+            align-items: center;
+            font-size: 29px;
+            height: 112px;
             color: $TEXT-DARK-COLOR;
+            .title{
+                font-size: 30px;
+                color: $TEXT-DARK-COLOR;
+            }
+            &>span{
+                &:first-child{
+                    flex:1;
+                    span{
+                        color: #FF2947;
+                        font-size: 44px;
+                        position: absolute;
+                        margin-left: 5px;
+                    }
+                }
+                &:nth-child(2) {
+                    color: $TEXT-DARK-COLOR;
+                }
+            }
+            .popup{
+                display: flex;
+                align-items: center;
+                color: #858585;
+                img{
+                    width: 32px;
+                    height: 30px;
+                    margin-left: 8px;
+                }
+            }
+            input{
+                min-width: 215px;
+                font-size: 29px;
+                text-align: right;
+                &::-webkit-input-placeholder{
+                    color: #858585;
+                }
+            }
+            .action{
+                color: $TEXT-DARK-COLOR;
+            }
+            .tab{
+                display: flex;
+                justify-content: flex-end;
+                div{
+                    min-width: 60px;
+                    height: 50px;
+                    background: #F3F3F3;
+                    border: 2px solid #E8E8E8;
+                    border-radius: 8px;
+                    padding: 0 10px;
+                    margin-left: 46px;
+                    text-align: center;
+                    line-height: 50px;
+                    font-size: 26px;
+                    color: #858585;
+                    &:first-child{
+                        margin-left: 0;
+                    }
+                }
+                .actionTab{
+                    background: $THEME-COLOR;
+                    color: #fff;
+                    border-color: rgba(0,0,0,0);
+                }
+            }
         }
         &:last-child{
             border: none;
         }
-        &>span{
-            &:first-child{
-                flex:1;
-                span{
-                    color: #FF2947;
-                    font-size: 44px;
-                    position: absolute;
-                    margin-left: 5px;
-                }
-            }
-            &:nth-child(2) {
-                color: $TEXT-DARK-COLOR;
-            }
-        }
-        .popup{
-            display: flex;
-            align-items: center;
-            color: #858585;
-            img{
-                width: 32px;
-                height: 30px;
-                margin-left: 8px;
-            }
-        }
-        input{
-            min-width: 215px;
-            font-size: 29px;
-            text-align: right;
+        textarea{
+            font-size: 30px;
+            width: 100%;
+            border: none;
+            resize: none;
             &::-webkit-input-placeholder{
                 color: #858585;
-            }
-        }
-        .action{
-            color: $TEXT-DARK-COLOR;
-        }
-        .tab{
-            display: flex;
-            justify-content: flex-end;
-            div{
-                min-width: 60px;
-                height: 50px;
-                background: #F3F3F3;
-                border: 2px solid #E8E8E8;
-                border-radius: 8px;
-                padding: 0 10px;
-                margin-left: 46px;
-                text-align: center;
-                line-height: 50px;
-                font-size: 26px;
-                color: #858585;
-                &:first-child{
-                    margin-left: 0;
-                }
-            }
-            .actionTab{
-                background: $THEME-COLOR;
-                color: #fff;
-                border-color: rgba(0,0,0,0);
             }
         }
     }

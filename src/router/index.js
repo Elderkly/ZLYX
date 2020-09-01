@@ -46,6 +46,10 @@ import PropertyUploadImg from '../page/propertyUploadImg/propertyUploadImg'
 import Scrap from '../page/scrap/scrap'
 //  资产报废列表
 import ScrapList from '../page/scrapList/scrapList'
+//  资产转科
+import ChangeDepartment from '../page/changeDepartment/changeDepartment'
+//  资产转科列表
+import ChangeDepartmentList from '../page/changeDepartmentList/changeDepartmentList'
 
 //  消息
 import Message from '@/page/message/message'
@@ -260,6 +264,16 @@ const _Router = new Router({
             path: '/scrap',
             name: 'Scrap',
             component: Scrap,
+        },
+        {
+            path: '/changeDepartment',
+            name: 'ChangeDepartment',
+            component: ChangeDepartment,
+        },
+        {
+            path: '/changeDepartmentList',
+            name: 'ChangeDepartmentList',
+            component: ChangeDepartmentList,
         },
     ]
 })
