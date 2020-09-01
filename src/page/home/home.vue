@@ -38,7 +38,7 @@
                     { name: '科室报修', icon: require('../../assets/img/wrench.png'), url: '/repairsList'},
                     { name: '维修管理', icon: require('../../assets/img/manage.png'), url: '/maintenanceManagement'},
                     { name: '我的审批', icon: require('../../assets/img/judge.png'), url: '/examineList'},
-                    { name: '资产档案', icon: require('../../assets/img/record.png'), url: ''},
+                    { name: '资产档案', icon: require('../../assets/img/record.png'), url: '/propertyRecord'},
                     { name: '资产转科', icon: require('../../assets/img/shift.png'), url: ''},
                     { name: '资产报废', icon: require('../../assets/img/scrap.png'), url: ''},
                     { name: '合同附件', icon: require('../../assets/img/accessory.png'), url: ''},

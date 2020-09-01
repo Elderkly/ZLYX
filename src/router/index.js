@@ -38,6 +38,10 @@ import ExamineReceiveList from '../page/examineReceiveList/examineReceiveList'
 import ServiceList from '../page/serviceList/serviceList'
 //  我的审批
 import ExamineList from '../page/examineList/examineList'
+//  资产档案
+import PropertyRecord from '../page/propertyRecord/propertyRecord'
+//  资产图片上传
+import PropertyUploadImg from '../page/propertyUploadImg/propertyUploadImg'
 
 //  消息
 import Message from '@/page/message/message'
@@ -232,6 +236,16 @@ const _Router = new Router({
             path: '/examineList',
             name: 'ExamineList',
             component: ExamineList
+        },
+        {
+            path: '/propertyRecord',
+            name: 'PropertyRecord',
+            component: PropertyRecord
+        },
+        {
+            path: '/propertyUploadImg',
+            name: 'PropertyUploadImg',
+            component: PropertyUploadImg
         },
     ]
 })
