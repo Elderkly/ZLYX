@@ -22,6 +22,14 @@ import Repairs from '../page/repairs/repairs'
 import QuestionSearch from '../page/questionSearch/questionSearch'
 //  科室报修
 import RepairsList from '../page/repairsList/repairsList'
+//  维修管理
+import MaintenanceManagement from '../page/maintenanceManagement/maintenanceManagement'
+//  派工/已派工
+import DispatchList from '../page/dispatchList/dispatchList'
+//  转单列表
+import TransferOrderList from '../page/transferOrderList/transferOrderList'
+//  转单
+import TransferOrder from '../page/transferOrder/transferOrder'
 
 //  消息
 import Message from '@/page/message/message'
@@ -176,6 +184,26 @@ const _Router = new Router({
             path: '/repairsList',
             name: 'RepairsList',
             component: RepairsList
+        },
+        {
+            path: '/maintenanceManagement',
+            name: 'MaintenanceManagement',
+            component: MaintenanceManagement
+        },
+        {
+            path: '/dispatchList',
+            name: 'DispatchList',
+            component: DispatchList
+        },
+        {
+            path: '/transferOrder',
+            name: 'TransferOrder',
+            component: TransferOrder
+        },
+        {
+            path: '/transferOrderList',
+            name: 'TransferOrderList',
+            component: TransferOrderList
         },
     ]
 })
