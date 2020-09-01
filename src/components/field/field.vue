@@ -24,6 +24,10 @@
         <input v-if="type === 'input'" :type="inputType" :placeholder="placeholder" @input="input" :value="text"/>
         <!--日历-->
         <van-calendar v-if="type === 'calendar'" v-model="showDiaLog" @confirm="onConfirm"/>
+        <!--tab-->
+        <div class="tab" v-if="type === 'teb'">
+            <div v-for="(item, index) in data" :class="index === tabSelectIndex ? 'actionTab' : ''" @click.stop="tabChange(item, index)">{{item}}</div>
+        </div>
     </div>
 </template>
 
@@ -59,7 +63,9 @@
                 //  弹窗记录选择项
                 renderData: this.type === 'popup' ? this.data[0] : null,
                 //  用于弹窗或日期选择器 需要更改显示文本的场景
-                showText: !!this.text ? this.text : this.placeholder
+                showText: !!this.text ? this.text : this.placeholder,
+                //  tab默认选中
+                tabSelectIndex: 0
             }
         },
         methods: {
@@ -85,6 +91,11 @@
                 this.showDiaLog = false
                 this.showText = _Date
                 this.$emit('onMessage', _Date)
+            },
+            //  tab
+            tabChange(item, index) {
+                this.tabSelectIndex = index
+                this.$emit('onMessage', item)
             }
         },
         components: {
@@ -144,6 +155,31 @@
         }
         .action{
             color: $TEXT-DARK-COLOR;
+        }
+        .tab{
+            display: flex;
+            justify-content: flex-end;
+            div{
+                min-width: 60px;
+                height: 50px;
+                background: #F3F3F3;
+                border: 2px solid #E8E8E8;
+                border-radius: 8px;
+                padding: 0 10px;
+                margin-left: 46px;
+                text-align: center;
+                line-height: 50px;
+                font-size: 26px;
+                color: #858585;
+                &:first-child{
+                    margin-left: 0;
+                }
+            }
+            .actionTab{
+                background: $THEME-COLOR;
+                color: #fff;
+                border-color: rgba(0,0,0,0);
+            }
         }
     }
 </style>

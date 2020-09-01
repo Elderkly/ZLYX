@@ -40,7 +40,7 @@
                     { name: '我的审批', icon: require('../../assets/img/judge.png'), url: '/examineList'},
                     { name: '资产档案', icon: require('../../assets/img/record.png'), url: '/propertyRecord'},
                     { name: '资产转科', icon: require('../../assets/img/shift.png'), url: ''},
-                    { name: '资产报废', icon: require('../../assets/img/scrap.png'), url: ''},
+                    { name: '资产报废', icon: require('../../assets/img/scrap.png'), url: '/scrapList'},
                     { name: '合同附件', icon: require('../../assets/img/accessory.png'), url: ''},
                     { name: '维修进度', icon: require('../../assets/img/schedule.png'), url: ''},
                     { name: '预防维护', icon: require('../../assets/img/maintain.png'), url: ''},

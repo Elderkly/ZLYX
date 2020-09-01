@@ -42,6 +42,10 @@ import ExamineList from '../page/examineList/examineList'
 import PropertyRecord from '../page/propertyRecord/propertyRecord'
 //  资产图片上传
 import PropertyUploadImg from '../page/propertyUploadImg/propertyUploadImg'
+//  资产报废
+import Scrap from '../page/scrap/scrap'
+//  资产报废列表
+import ScrapList from '../page/scrapList/scrapList'
 
 //  消息
 import Message from '@/page/message/message'
@@ -151,9 +155,6 @@ const _Router = new Router({
             path: '/examine',
             name: 'Examine',
             component: Examine,
-            meta: {
-                notAlive: true // 不需要缓存
-            }
         },
         {
             path: '/examineReceive',
@@ -249,9 +250,16 @@ const _Router = new Router({
             path: '/propertyUploadImg',
             name: 'PropertyUploadImg',
             component: PropertyUploadImg,
-            meta: {
-                notAlive: true // 不需要缓存
-            }
+        },
+        {
+            path: '/scrapList',
+            name: 'ScrapList',
+            component: ScrapList,
+        },
+        {
+            path: '/scrap',
+            name: 'Scrap',
+            component: Scrap,
         },
     ]
 })
