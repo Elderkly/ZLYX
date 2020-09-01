@@ -137,7 +137,7 @@
                                 <p>存放地点：</p>
                             </div>
                             <div>
-                                <p>100028000</p>
+                                <p></p>
                                 <p>DK01CFU4</p>
                                 <p>HOP-100</p>
                                 <p>医学院工程部</p>
@@ -283,6 +283,7 @@
                                 color: #999;
                                 font-size: 26px;
                                 line-height: 45px;
+                                height: 45px;
                             }
                             &>div{
                                 &:last-child{

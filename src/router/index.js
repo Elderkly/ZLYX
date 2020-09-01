@@ -140,7 +140,7 @@ const _Router = new Router({
         {
             path: '/dispatch',
             name: 'Dispatch',
-            component: Dispatch
+            component: Dispatch,
         },
         {
             path: '/staffSearch',
@@ -150,7 +150,10 @@ const _Router = new Router({
         {
             path: '/examine',
             name: 'Examine',
-            component: Examine
+            component: Examine,
+            meta: {
+                notAlive: true // 不需要缓存
+            }
         },
         {
             path: '/examineReceive',
