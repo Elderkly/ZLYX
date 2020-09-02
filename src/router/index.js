@@ -54,6 +54,10 @@ import ChangeDepartmentList from '../page/changeDepartmentList/changeDepartmentL
 import Accessory from '../page/accessory/accessory'
 //  合同附件列表
 import AccessoryList from '../page/accessoryList/accessoryList'
+//  进度查询
+import MaintenanceProgress from '../page/maintenanceProgress/maintenanceProgress'
+//  维修进度列表
+import MaintenanceProgressList from '../page/maintenanceProgressList/maintenanceProgressList'
 
 //  消息
 import Message from '@/page/message/message'
@@ -288,6 +292,16 @@ const _Router = new Router({
             path: '/accessoryList',
             name: 'AccessoryList',
             component: AccessoryList,
+        },
+        {
+            path: '/maintenanceProgress',
+            name: 'MaintenanceProgress',
+            component: MaintenanceProgress,
+        },
+        {
+            path: '/maintenanceProgressList',
+            name: 'MaintenanceProgressList',
+            component: MaintenanceProgressList,
         },
     ]
 })
