@@ -11,6 +11,7 @@
             <van-popup v-if="type === 'popup'" v-model="showDiaLog" position="bottom" :style="{ height: '50%', borderRadius: '10px 10px 0 0'}">
                 <div class="picker-header">
                     <span @click="showDiaLog = false">取消</span>
+                    <input type="text" placeholder="搜索" v-if="popupInput" @input="_popupInput"/>
                     <span @click="confirm">确定</span>
                 </div>
                 <van-picker
@@ -61,6 +62,10 @@
             },
             placeholder: String,
             listen: Boolean,                //  用于应对一个组件有多个监听的情况下 区分是哪个选项卡的监听
+            popupInput: {                   //  popup搜索框
+                type: Boolean,
+                default: false
+            },
         },
         data() {
             return {
@@ -111,6 +116,10 @@
             //  输入框
             input() {
                 this.$emit('onMessage', event.target.value)
+            },
+            //  popup输入框
+            _popupInput() {
+                this.$emit('input', event.target.value)
             },
             //  日历
             onConfirm(date) {

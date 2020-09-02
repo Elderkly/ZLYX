@@ -173,15 +173,18 @@ p,span{
     left: 0;
     right: 0;
     background: $BACKGROUND-COLOR;
+    justify-content: space-between;
     span{
         font-size: 34px;
         &:first-child{
             color: $TEXT-DARK-COLOR;
-            flex: 1;
         }
         &:last-child{
             color: $THEME-COLOR;
         }
-
+    }
+    input{
+        text-align: center!important;
+        font-size: 34px!important;
     }
 }

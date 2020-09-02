@@ -12,7 +12,8 @@
         }" :hidden-department="true"/>
             <div class="infoBox">
                 <p class="title">档案信息</p>
-                <Field title="档案类型" placeholder="请选择档案类型" :data="['申购审批表','合同信息','安装验收','技术支持','购置档案','质量检测','预防维护','安全检查','报废审批表','合格证','发票','资产图片']" type="popup"
+                <Field title="档案类型" placeholder="请选择档案类型" :data="popup" type="popup" popupInput
+                       @input="popupInput"
                        @onMessage="value => type = value"/>
             </div>
             <ImgModule upload @changeImg="list => uploadImg = list"/>
@@ -36,6 +37,7 @@
                 data: this.$route.params.item,
                 uploadImg: [],              //  图片
                 type: null,                 //  档案类型
+                popup: ['申购审批表','合同信息','安装验收','技术支持','购置档案','质量检测','预防维护','安全检查','报废审批表','合格证','发票','资产图片']
             }
         },
         components: {
@@ -57,6 +59,12 @@
                 )
                 this.type = null
                 this.uploadImg = []
+            },
+            popupInput(value) {
+                console.log(value)
+                if (value === 'push') {
+                    this.popup.unshift('添加选项')
+                }
             }
         },
         watch: {
