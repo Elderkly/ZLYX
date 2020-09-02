@@ -1,84 +1,85 @@
 <template>
-    <div>
-        <div class="QualityTest" ref="Box">
-            <div class="QualityTestHeader">
-                <img src="../../assets/img/left.png" @click="$router.back()"/>
-                质量检测
-            </div>
-            <div class="infoBox">
-                <p class="title">设备信息</p>
-                <div class="info">
-                    <div>
-                        <img :src="data.Img" />
-                    </div>
-                    <div>
-                        <p class="ellipsis">设备名称： <span>{{data.EquName}}</span></p>
-                        <p class="ellipsis">使用科室： <span>{{data.DepName}}</span></p>
-                    </div>
-                    <div>
-                        <p class="ellipsis">规格型号： <span>{{data.OrderNo}}</span></p>
-                        <p class="ellipsis">生产日期： <span>{{data.QYRQ}}</span></p>
-                    </div>
-                    <div>
-                        <p class="ellipsis">设备编号： <span>{{data.EquId}}</span></p>
-                        <p class="ellipsis">启用日期： <span>{{data.KeepDate}}</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="infoBox quality">
-                <div class="tableTitle">
-                    <div>检测项目</div>
-                    <div>检测内容</div>
-                    <div>检测结果</div>
-                    <div>说明</div>
-                </div>
-                <div class="tableItems" v-for="item in list">
-                    <div class="tableItemsLeftBox">{{item.title}}</div>
-                    <div class="tableItemsRightBox">
-                        <div v-for="itemList in item.list">
-                            <div>{{itemList.ProName}}</div>
-                            <div>
-                                <div :class="itemList.ResultSuccess === itemList.DefalultResult ? 'action' : ''" @click="() => itemList.DefalultResult = itemList.ResultSuccess">{{itemList.ResultSuccess}}</div>
-                                <div :class="itemList.ResultError === itemList.DefalultResult ? 'action' : ''" @click="() => itemList.DefalultResult = itemList.ResultError">{{itemList.ResultError}}</div>
-                            </div>
-                            <div>
-                                <input type="text" placeholder="请输入" v-model="itemList.Explain"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="infoBox quality">
-                <div class="tableItems" v-for="item in list2">
-                    <div class="tableItemsLeftBox">{{item.title}}</div>
-                    <div :class="'tableItemsRightBox2 ' + item.type">
-                        <van-checkbox-group v-model="calibration" v-if="item.type === 'checkbox-group'">
-                            <van-checkbox v-for="(itemList,index) in item.list" :key="index" :name="itemList" checked-color="#4fa69e">{{itemList}}</van-checkbox>
-                        </van-checkbox-group>
-                        <van-radio-group v-model="actuality" v-if="item.type === 'checkbox'">
-                            <van-radio v-for="(itemList, index) in item.list" :key="index" :name="itemList" checked-color="#4fa69e">{{itemList}}</van-radio>
-                        </van-radio-group>
-                        <div class="input-group" v-if="item.type === 'input-group'">
-                            <div v-for="itemList in item.list">
-                                <p>{{itemList.text}}</p>
-                                <input type="text" placeholder="请输入" v-model="itemList.explain" :disabled="itemList.disabled ? 'disabled' : false" @focus="() => itemList.type === 'calender' ? showCalendar = true : null"/>
-                            </div>
-                        </div>
-                        <input v-if="item.type === 'input'" type="text" :placeholder="item.explain ? item.explain : '请输入'" v-model="item.explain"/>
-                    </div>
-                </div>
-            </div>
-            <div class="imgBox">
-                <ImgModule upload @changeImg="list => uploadImg = list" title=""/>
-            </div>
-            <div class="footer">提交</div>
+    <div class="QualityTest" ref="Box">
+        <div class="QualityTestHeader">
+            <img src="../../assets/img/left.png" @click="$router.back()"/>
+            质量检测
         </div>
+        <div class="infoBox firstBox">
+            <p class="title">设备信息</p>
+            <div class="info">
+                <div>
+                    <img :src="data.Img" />
+                </div>
+                <div>
+                    <p class="ellipsis">设备名称： <span>{{data.EquName}}</span></p>
+                    <p class="ellipsis">使用科室： <span>{{data.DepName}}</span></p>
+                </div>
+                <div>
+                    <p class="ellipsis">规格型号： <span>{{data.OrderNo}}</span></p>
+                    <p class="ellipsis">生产日期： <span>{{data.QYRQ}}</span></p>
+                </div>
+                <div>
+                    <p class="ellipsis">设备编号： <span>{{data.EquId}}</span></p>
+                    <p class="ellipsis">启用日期： <span>{{data.KeepDate}}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="infoBox quality">
+            <div class="tableTitle">
+                <div>检测项目</div>
+                <div>检测内容</div>
+                <div>检测结果</div>
+                <div>说明</div>
+            </div>
+            <div class="tableItems" v-for="item in list">
+                <div class="tableItemsLeftBox">{{item.title}}</div>
+                <div class="tableItemsRightBox">
+                    <div v-for="itemList in item.list">
+                        <div>{{itemList.ProName}}</div>
+                        <div>
+                            <div :class="itemList.ResultSuccess === itemList.DefalultResult ? 'action' : ''" @click="() => itemList.DefalultResult = itemList.ResultSuccess">{{itemList.ResultSuccess}}</div>
+                            <div :class="itemList.ResultError === itemList.DefalultResult ? 'action' : ''" @click="() => itemList.DefalultResult = itemList.ResultError">{{itemList.ResultError}}</div>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="请输入" v-model="itemList.Explain"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="infoBox quality">
+            <div class="tableItems" v-for="item in list2">
+                <div class="tableItemsLeftBox">{{item.title}}</div>
+                <div :class="'tableItemsRightBox2 ' + item.type">
+                    <van-checkbox-group v-model="calibration" v-if="item.type === 'checkbox-group'">
+                        <van-checkbox v-for="(itemList,index) in item.list" :key="index" :name="itemList" checked-color="#4fa69e">{{itemList}}</van-checkbox>
+                    </van-checkbox-group>
+                    <van-radio-group v-model="actuality" v-if="item.type === 'checkbox'">
+                        <van-radio v-for="(itemList, index) in item.list" :key="index" :name="itemList" checked-color="#4fa69e">{{itemList}}</van-radio>
+                    </van-radio-group>
+                    <div class="input-group" v-if="item.type === 'input-group'">
+                        <div v-for="itemList in item.list">
+                            <p>{{itemList.text}}</p>
+                            <input type="text" v-if="itemList.type !== 'calender'" placeholder="请输入" v-model="itemList.explain" :disabled="itemList.disabled ? 'disabled' : false"/>
+
+                            <div class="calenderText" v-if="itemList.type === 'calender'" @click="(showCalendar = true,setData = itemList)">{{itemList.explain ? itemList.explain : "请输入"}}</div>
+                            <van-calendar v-if="itemList.type === 'calender'" v-model="showCalendar" @confirm="onConfirm"/>
+                        </div>
+                    </div>
+                    <input v-if="item.type === 'input'" type="text" :placeholder="item.explain ? item.explain : '请输入'" v-model="item.explain"/>
+                </div>
+            </div>
+        </div>
+        <div class="imgBox">
+            <ImgModule upload @changeImg="list => uploadImg = list" title=""/>
+        </div>
+        <div class="footer" @click="upload">提交</div>
     </div>
 </template>
 
 <script>
     import ImgModule from '../../components/imgModule/imgModule'
-    import {CheckboxGroup, Checkbox, RadioGroup, Radio} from 'vant'
+    import {CheckboxGroup, Checkbox, RadioGroup, Radio, Calendar} from 'vant'
     export default {
         name: 'QualityTest',
         data() {
@@ -99,10 +100,12 @@
                 actuality: '工作正常',          //  仪器现状选中内容
                 uploadImg:[],                  //   图片
                 showCalendar: false,           //   显示日历
+                setData: null,                 //   用于区分日历组件指向哪一个item
             }
         },
         components: {
             ImgModule,
+            [Calendar.name]: Calendar,
             [Checkbox.name]: Checkbox,
             [CheckboxGroup.name]: CheckboxGroup,
             [RadioGroup.name]: RadioGroup,
@@ -111,9 +114,7 @@
         mounted() {
             //  获取数据
             this.getApiData().then(() => {
-                //  异步执行确保数据渲染完毕后再计算高度
-                //  修改App容器高度
-                this.setAppHeight()
+                window.scrollTo(0,0)
             })
         },
         methods: {
@@ -816,6 +817,7 @@
                     }
                     const newJson = []
                     for (let x in HttpList) {
+                        //  为了优化算法速度 将切换检测结果时直接修改DefalultResult字段
                         newJson.push({
                             title: HttpList[x][0].MainName,
                             list: HttpList[x]
@@ -826,81 +828,82 @@
                     reject()
                 })
             },
-            setAppHeight() {
-                //  修改app容器的宽度实现滚动效果
-                const App = document.getElementById('app')
-                App.style.width = this.$refs.Box.clientHeight + 'px'
-                App.style.height = '100vh'
-                App.scrollIntoView({
-                    inline: 'end'
-                })
+            //  日历
+            onConfirm(date) {
+                const _Date = `${date.getFullYear()}-${date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 9 ? '0' + date.getDate() : date.getDate()}`
+                this.setData.explain = _Date
+                this.showCalendar = false
             },
-            onChange(date) {
-                console.log(123123)
-                console.log(date.format('YY-MM-DD'));
-            },
+            //  提交
+            upload() {
+                console.log(this.list2)
+                // console.log(this.list,'\n',this.list2,'\n',this.uploadImg,'\n',this.calibration,'\n',this.actuality)
+            }
         },
-        beforeDestroy() {
-            //  组件摧毁前重制app容器的宽度
-            document.getElementById('app').style.cssText = 'width: 100vw;min-height: calc(100vh - 50px)'
-        }
     }
 </script>
 
 <style scoped lang="scss">
     .QualityTest{
-        transform: rotate(90deg);
-        width: 100vh;
-        min-height: 750px;
+        /*transform: rotate(90deg);*/
+        /*width: 100vh;*/
+        /*min-height: 750px;*/
         background: #F0F4F7;
-        transform-origin: left top;
-        margin-left: 100%;
+        /*transform-origin: left top;*/
+        /*margin-left: 100%;*/
         padding-bottom: 20px;
+        padding-top: 48px;
     }
     .QualityTestHeader{
-        width: 100vh;
-        height: 88px;
+        width: 100vw;
+        height: 48px;
         text-align: center;
-        line-height: 88px;
-        position: relative;
-        font-size: 32px;
+        line-height: 48px;
+        position: fixed;
+        font-size: 18px;
         color: #fff;
         background: $THEME-COLOR;
+        top:0;
+        z-index: 10;
         img{
-            width: 42px;
+            width: 23px;
             position: absolute;
             left: 2px;
             top: 2px;
-            padding: 20px
+            padding: 10px
         }
     }
     .infoBox{
         width: 96%;
-        margin: 10px auto 20px;
-        padding-bottom: 20px;
+        margin: 10px auto;
+        padding: 10px 20px;
+        .title{
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
     }
     .info{
         display: flex;
         &>div{
             flex:1;
             text-align: left;
-            font-size: 22px;
+            font-size: 12px;
             color: #999;
             &:first-child{
                 flex: 0.35
             }
             p{
-                margin-top: 11px;
-                margin-bottom: 19px;
+                margin-top: 5px;
+                margin-bottom: 9px;
                 width: 95%;
             }
             span{
                 color: $TEXT-DARK-COLOR;
             }
             img{
-                width: 83px;
-                height: 102px;
-                border-radius: 2px;
+                width: 50px;
+                height: 60px;
+                border-radius: 1px;
             }
         }
     }
@@ -909,19 +912,20 @@
     }
     .tableTitle{
         display: flex;
-        height: 67px;
-        line-height: 67px;
-        border-bottom: 2px solid #e8e8e8;
+        height: 33px;
+        line-height: 33px;
+        border-bottom: 1px solid #e8e8e8;
         font-weight: bold;
         div{
             flex:1;
-            font-size: 22px;
+            font-size: 12px;
             color: $TEXT-DARK-COLOR;
             &:first-child{
                 text-indent: 34px;
             }
             &:nth-child(3) {
                 text-align: center;
+                text-indent: 10px;
             }
             &:last-child{
                 text-indent: 30px;
@@ -930,16 +934,16 @@
     }
     .tableItems{
         display: flex;
-        font-size: 22px;
+        font-size: 12px;
         color: #333;
         font-weight: bold;
         .tableItemsLeftBox{
-            width: 201px;
-            border-right: 2px solid #e8e8e8;
+            width: 100px;
+            border-right: 1px solid #e8e8e8;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 2px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
         }
         &:last-child .tableItemsLeftBox,&:last-child .tableItemsRightBox>div, &:last-child .tableItemsRightBox2{
             border-bottom: none;
@@ -948,11 +952,11 @@
             flex: 1;
             &>div{
                 display: flex;
-                border-bottom: 2px solid #e8e8e8;
+                border-bottom: 1px solid #e8e8e8;
                 &>div{
                     &:first-child{
-                        width: 351px;
-                        padding: 39px 40px 25px;
+                        width: 240px;
+                        padding: 19px 21px 12px;
                         text-align: left;
                     }
                     &:nth-child(2) {
@@ -961,15 +965,16 @@
                         justify-content: center;
                         display: flex;
                         div{
-                            width: 95px;
-                            height: 52px;
+                            width: 47px;
+                            height: 25px;
                             background: #F3F3F3;
-                            border-radius: 4px;
+                            border-radius: 2px;
                             color: #858585;
-                            font-size: 20px;
-                            line-height: 52px;
+                            font-size: 8px;
+                            line-height: 25px;
                             text-align: center;
-                            margin-right: 29px;
+                            font-weight: 400;
+                            margin-right: 14px;
                             &:last-child{
                                 margin-right: 0;
                             }
@@ -986,13 +991,13 @@
                         justify-content: center;
                         align-items: center;
                         input{
-                            width: 231px;
-                            height: 52px;
+                            width: 115px;
+                            height: 25px;
                             background: #f3f3f3;
                             border-radius: 4px;
-                            font-size: 20px;
+                            font-size: 10px;
                             font-weight: 400;
-                            text-indent: 24px;
+                            text-indent: 12px;
                             ::-webkit-input-placeholder{
                                 color: #858585;
                             }
@@ -1003,27 +1008,28 @@
         }
         .tableItemsRightBox2{
             flex: 1;
-            padding: 20px;
-            border-bottom: 2px solid #e8e8e8;
+            padding: 10px;
+            border-bottom: 1px solid #e8e8e8;
             &>input{
                 width: 95%;
-                border: 2px solid #e8e8e8;
+                border: 1px solid #e8e8e8;
                 margin: auto;
                 border-radius: 4px;
-                height: 80px;
+                height: 40px;
                 background: #f3f3f3;
-                font-size: 20px;
-                text-indent: 30px;
+                font-size: 10px;
+                text-indent: 10px;
                 font-weight: 400;
             }
         }
         .checkbox-group{
+            padding-bottom: 0;
             &>div {
                 display: flex;
                 flex-wrap: wrap;
                 &>div{
                     margin-right: 25px;
-                    margin-bottom: 15px;
+                    margin-bottom: 10px;
                 }
             }
         }
@@ -1040,26 +1046,32 @@
             &>div{
                 flex: 1;
                 text-align: center;
-                input{
+                input,.calenderText{
                     width: 80%;
                     text-align: center;
-                    border: 2px solid #e8e8e8;
+                    border: 1px solid #e8e8e8;
                     margin: auto;
                     margin-top: 10px;
                     border-radius: 4px;
-                    height: 60px;
+                    height: 25px;
                     background: #f3f3f3;
-                    font-size: 20px;
+                    font-size: 12px;
                     font-weight: 400;
+                    line-height: 25px;
                     ::-webkit-input-placeholder{
                         color: #858585;
+                    }
+                    &:disabled{
+                        background-color: #f3f3f3;
+                        color: $TEXT-DARK-COLOR;
+                        opacity: 1;
                     }
                 }
             }
         }
     }
     .lastBox{
-        padding: 0 20px;
+        padding: 0 10px;
         span{
             color: #F4F4F4!important;
         }
@@ -1071,12 +1083,12 @@
     .footer{
         width: 96%;
         margin: auto;
-        height: 80px;
+        height: 40px;
         background: $THEME-COLOR;
-        border-radius: 8px;
+        border-radius: 4px;
         color: #fff;
-        font-size: 30px;
-        line-height: 80px;
+        font-size: 12px;
+        line-height: 40px;
         text-align: center;
     }
 </style>

@@ -188,7 +188,18 @@ p,span{
         font-size: 34px!important;
     }
 }
-.m-calendar{
-    z-index: 10001;
-    position: relative;
+.QualityTest .imgModuleBox{
+    padding: 10px 10px 5px!important;
+    p{
+        display: none;
+    }
+    .van-uploader__upload,.van-image{
+        width: 50px;
+        height: 50px;
+        margin-bottom: 5px;
+    }
+    .van-uploader__preview{
+        margin-right: 10px;
+        margin-bottom: 5px;
+    }
 }
