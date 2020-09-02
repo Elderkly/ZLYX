@@ -20,6 +20,7 @@
                         @change="onChange"
                         item-height="15vw"
                         swipe-duration="500"
+                        :default-index="selectIndex"
                 />
             </van-popup>
             <!--输入框-->
@@ -42,30 +43,31 @@
     export default {
         name: 'Field',
         props: {
-            type: {
+            type: {                         //  类型 input text teb popup calendar
                 type: String | Array,
                 default: 'input'
             },
-            title: String,
-            text: String | Number,
-            action: {
+            title: String,                  //  左侧高亮字体
+            text: String | Number,          //  右侧字体
+            action: {                       //  是否显示红标*
                 type: Boolean,
                 default: false
             },
-            data: {
+            data: {                         //  列表数据
                 type: Array | Object,
                 default: null
             },
-            inputType: {
+            inputType: {                    //  当type值为input时 设置input type
                 type: String,
                 default: 'text'
             },
-            placeholder: String,
+            placeholder: String,            //  默认文本
             listen: Boolean,                //  用于应对一个组件有多个监听的情况下 区分是哪个选项卡的监听
             popupInput: {                   //  popup搜索框
                 type: Boolean,
                 default: false
             },
+            selectIndex: Number,            //  popup默认聚焦index
         },
         data() {
             return {
