@@ -63,7 +63,7 @@
                             <input type="text" v-if="itemList.type !== 'calender'" placeholder="请输入" v-model="itemList.explain" :disabled="itemList.disabled ? 'disabled' : false"/>
 
                             <div class="calenderText" v-if="itemList.type === 'calender'" @click="(showCalendar = true,setData = itemList)">{{itemList.explain ? itemList.explain : "请输入"}}</div>
-                            <van-calendar v-if="itemList.type === 'calender'" v-model="showCalendar" @confirm="onConfirm"/>
+                            <van-calendar :round="false" v-if="itemList.type === 'calender'" v-model="showCalendar" @confirm="onConfirm"/>
                         </div>
                     </div>
                     <input v-if="item.type === 'input'" type="text" :placeholder="item.explain ? item.explain : '请输入'" v-model="item.explain"/>
@@ -1058,6 +1058,7 @@
                     font-size: 12px;
                     font-weight: 400;
                     line-height: 25px;
+                    padding:0;
                     ::-webkit-input-placeholder{
                         color: #858585;
                     }

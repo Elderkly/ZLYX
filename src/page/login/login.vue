@@ -57,7 +57,9 @@
                     }
                     this.$store.commit('SET_USER_INFO', userInfo)
                     localStorage.setItem('userInfo',JSON.stringify(userInfo))
-                    const router = location.href.indexOf('code') !== -1 ? `/?code=${location.hash.split('code=')[1]}` : '/'
+                    const base_router = location.href.indexOf('code') !== -1 ? `/?code=${location.hash.split('code=')[1]}` : '/'
+                    const router = base_router.split('&')[0]
+                    console.log(router)
                     this.$router.replace(router)
                     window.scrollTo(0,0)
                 }
