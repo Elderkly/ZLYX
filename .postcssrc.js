@@ -8,7 +8,7 @@ module.exports = {
     "postcss-write-svg": { utf8: false },
     "postcss-px-to-viewport": {
       viewportWidth: 750, // 容器宽度，也可以看作设计图的宽度
-      // viewportHeight: 1334, // 容器高度，可以不配置
+      viewportHeight: 1334, // 容器高度，可以不配置
       unitPrecision: 3, // px转换为vw后保留的小数位
       viewportUnit: 'vw', // px需要转换成的单位，使用vw
       selectorBlackList: ['.van'], // 不需要转换为其他单位的的class类

@@ -25,7 +25,7 @@
         props: {
             img: Array,
             title: {
-                type: String,
+                type: String | null,
                 default: '图片'
             },
             upload: {

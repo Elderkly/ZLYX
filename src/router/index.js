@@ -58,6 +58,10 @@ import AccessoryList from '../page/accessoryList/accessoryList'
 import MaintenanceProgress from '../page/maintenanceProgress/maintenanceProgress'
 //  维修进度列表
 import MaintenanceProgressList from '../page/maintenanceProgressList/maintenanceProgressList'
+//  预防计划实施
+import Prevent from '../page/prevent/prevent'
+//  质量检测
+import QualityTest from '../page/qualityTest/qualityTest'
 
 //  消息
 import Message from '@/page/message/message'
@@ -302,6 +306,16 @@ const _Router = new Router({
             path: '/maintenanceProgressList',
             name: 'MaintenanceProgressList',
             component: MaintenanceProgressList,
+        },
+        {
+            path: '/prevent',
+            name: 'Prevent',
+            component: Prevent,
+        },
+        {
+            path: '/qualityTest',
+            name: 'QualityTest',
+            component: QualityTest,
         },
     ]
 })
