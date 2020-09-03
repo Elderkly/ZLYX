@@ -44,7 +44,7 @@
                     { name: '合同附件', icon: require('../../assets/img/accessory.png'), url: '/accessoryList'},
                     { name: '维修进度', icon: require('../../assets/img/schedule.png'), url: '/maintenanceProgressList'},
                     { name: '预防维护', icon: require('../../assets/img/maintain.png'), url: '/prevent'},
-                    { name: '设备申购', icon: require('../../assets/img/subscribe.png'), url: ''},
+                    { name: '设备申购', icon: require('../../assets/img/subscribe.png'), url: '/askList'},
                     { name: '验收入库', icon: require('../../assets/img/storage.png'), url: ''},
                     { name: '借用申请', icon: require('../../assets/img/borrow.png'), url: '/borrowList'},
                     { name: '归还申请', icon: require('../../assets/img/return.png'), url: '/giveBack'},

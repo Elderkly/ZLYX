@@ -33,7 +33,7 @@
             </div>
         </div>
         <!--textarea-->
-        <textarea v-if="type === 'textarea'" :placeholder="placeholder" cols="3" @input="input"/>
+        <textarea v-if="type === 'textarea'" :placeholder="placeholder" cols="3" :value="text" @input="input"/>
     </div>
 </template>
 
@@ -201,8 +201,8 @@
                     background: #F3F3F3;
                     border: 2px solid #E8E8E8;
                     border-radius: 8px;
-                    padding: 0 10px;
-                    margin-left: 46px;
+                    padding: 0 12px;
+                    margin-left: 12px;
                     text-align: center;
                     line-height: 50px;
                     font-size: 26px;

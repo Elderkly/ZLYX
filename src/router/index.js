@@ -62,6 +62,12 @@ import MaintenanceProgressList from '../page/maintenanceProgressList/maintenance
 import Prevent from '../page/prevent/prevent'
 //  质量检测
 import QualityTest from '../page/qualityTest/qualityTest'
+//  设备申购
+import AskList from '../page/askList/askList'
+//  设备申请
+import Ask from '../page/ask/ask'
+//  新增申请
+import AskAdd from '../page/askAdd/askAdd'
 
 //  消息
 import Message from '@/page/message/message'
@@ -316,6 +322,21 @@ const _Router = new Router({
             path: '/qualityTest',
             name: 'QualityTest',
             component: QualityTest,
+        },
+        {
+            path: '/askList',
+            name: 'AskList',
+            component: AskList,
+        },
+        {
+            path: '/askAdd',
+            name: 'AskAdd',
+            component: AskAdd,
+        },
+        {
+            path: '/ask',
+            name: 'Ask',
+            component: Ask,
         },
     ]
 })

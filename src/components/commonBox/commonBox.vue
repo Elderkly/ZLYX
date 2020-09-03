@@ -6,6 +6,7 @@
             <div v-if="rightButton === 'search'" class="search">
                 <img src="../../assets/img/search.png">
             </div>
+            <span v-else-if="rightButton" @click="$router.push(path)">{{rightButton}}</span>
         </div>
         <div class="bool"/>
         <div class="content">
@@ -29,7 +30,8 @@
             leftButton: {
                 type: String,
                 default: 'back'
-            }
+            },
+            path: String
         },
         methods: {
             back() {
@@ -73,6 +75,15 @@
                 width: 38px;
                 margin-top: 11px;
             }
+        }
+        span{
+            position: absolute;
+            right: 8px;
+            top: 6px;
+            padding: 20px;
+            font-size: 34px;
+            color: #fff;
+            font-weight: 400;
         }
     }
     .bool{

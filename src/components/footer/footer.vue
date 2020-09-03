@@ -28,6 +28,7 @@
         padding: 20px 0;
         display: flex;
         justify-content: center;
+        align-items: center;
         .onlyButton{
             width:690px;
             height:96px;
