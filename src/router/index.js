@@ -68,6 +68,8 @@ import AskList from '../page/askList/askList'
 import Ask from '../page/ask/ask'
 //  新增申请
 import AskAdd from '../page/askAdd/askAdd'
+//  审批/报告
+import ReportApproval from '../page/reportApproval/reportApproval'
 
 //  消息
 import Message from '@/page/message/message'
@@ -337,6 +339,11 @@ const _Router = new Router({
             path: '/ask',
             name: 'Ask',
             component: Ask,
+        },
+        {
+            path: '/reportApproval',
+            name: 'ReportApproval',
+            component: ReportApproval,
         },
     ]
 })

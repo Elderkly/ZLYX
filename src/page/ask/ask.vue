@@ -54,12 +54,15 @@
                 </div>
                 <div class="itemBottomBox">
                     <div @click="preview">预览</div>
-                    <div>{{item.GZLB === '03' ? '申请审批表' : '论证报告'}}</div>
+                    <div @click="$router.push({name: 'ReportApproval', params: {Report: item.GZLB === '03'}})">{{item.GZLB === '03' ? '申请审批表' : '论证报告'}}</div>
                     <div @click="$router.push({name: 'AskAdd',params: {item}})">修改</div>
                 </div>
             </div>
         </Box>
-        <Footer :button="[{text:'提交',color:'#fff',background:'#4FA69E',event:'upload'},{text:'保存',color:'#fff',background:'#4FA69E',event:'save'}]"/>
+        <Footer :button="[{text:'提交',color:'#fff',background:'#4FA69E',event:'upload'},{text:'保存',color:'#fff',background:'#4FA69E',event:'save'}]"
+                @upload="upload"
+                @save="save"
+        />
     </div>
 </template>
 
@@ -131,6 +134,13 @@
             })
         },
         methods: {
+            upload() {
+                console.log(this.rows,this.uploadData)
+                alert('提交')
+            },
+            save() {
+                alert('保存')
+            },
             preview() {
                 Toast({
                     message: '点击了预览，暂时没有链接，有链接就可以跳转了',
