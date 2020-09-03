@@ -70,6 +70,8 @@ import Ask from '../page/ask/ask'
 import AskAdd from '../page/askAdd/askAdd'
 //  审批/报告
 import ReportApproval from '../page/reportApproval/reportApproval'
+//  设备验收
+import EquipmentAcceptance from '../page/equipmentAcceptance/equipmentAcceptance'
 
 //  消息
 import Message from '@/page/message/message'
@@ -344,6 +346,11 @@ const _Router = new Router({
             path: '/reportApproval',
             name: 'ReportApproval',
             component: ReportApproval,
+        },
+        {
+            path: '/equipmentAcceptance',
+            name: 'EquipmentAcceptance',
+            component: EquipmentAcceptance,
         },
     ]
 })
