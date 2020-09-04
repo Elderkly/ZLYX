@@ -125,7 +125,7 @@
             },
             //  日历
             onConfirm(date) {
-                const _Date = `${date.getFullYear()}-${date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 9 ? '0' + date.getDate() : date.getDate()}`
+                const _Date = `${date.getFullYear()}-${date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 10 ? '0' + date.getDate() : date.getDate()}`
                 this.showDiaLog = false
                 this.showText = _Date
                 this.$emit('onMessage', _Date)

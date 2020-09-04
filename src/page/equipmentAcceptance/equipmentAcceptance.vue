@@ -1,5 +1,5 @@
 <template>
-    <Box title="设备验收" :rightButton="[{text:'新增设备', router: ''},{text:'历史记录', router: ''}]">
+    <Box title="设备验收" :rightButton="[{text:'新增设备', router: '/equipmentAcceptanceDetails'},{text:'历史记录', router: '/history'}]">
         <LoadingFooter
             v-model="loading"
             :finished="finished"
@@ -14,7 +14,7 @@
                 <div class="search" @click="serach">查询</div>
             </div>
             <p class="listLength">共计 <span>{{list.length}}条</span></p>
-            <div class="items" v-for="item in list" @click="$router.push({name: 'PropertyDetails', params: {item} })">
+            <div class="items" v-for="item in list" @click="$router.push({name: 'EquipmentAcceptanceDetails', params: {item} })">
                 <div>
                     <img :src="item.Img"/>
                     <div>
@@ -38,7 +38,7 @@
                         <div>
                             <span class="ellipsis">¥<span>{{item.HTJE}}</span></span> <img src="../../assets/img/right.png"/>
                         </div>
-                        <div @click.stop="$router.push({name: 'Scrap', params: {item}})">验收</div>
+                        <div>验收</div>
                     </div>
                 </div>
                 <div>
@@ -55,7 +55,7 @@
     import Field from '../../components/field/field'
     import LoadingFooter from '../../components/loadingFooter/loadingFooter'
     export default {
-        name: 'ScrapList',
+        name: 'EquipmentAcceptance',
         data() {
             return {
                 search: {

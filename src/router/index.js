@@ -72,6 +72,12 @@ import AskAdd from '../page/askAdd/askAdd'
 import ReportApproval from '../page/reportApproval/reportApproval'
 //  设备验收
 import EquipmentAcceptance from '../page/equipmentAcceptance/equipmentAcceptance'
+//  验收记录
+import History from '../page/history/history'
+//  设备入库
+import StorageEquipment from '../page/storageEquipment/storageEquipment'
+//  设备验收信息
+import EquipmentAcceptanceDetails from '../page/equipmentAcceptanceDetails/equipmentAcceptanceDetails'
 
 //  消息
 import Message from '@/page/message/message'
@@ -352,6 +358,21 @@ const _Router = new Router({
             name: 'EquipmentAcceptance',
             component: EquipmentAcceptance,
         },
+        {
+            path: '/history',
+            name: 'History',
+            component: History,
+        },
+        {
+            path: '/storageEquipment',
+            name: 'StorageEquipment',
+            component: StorageEquipment,
+        },
+        {
+            path: '/equipmentAcceptanceDetails',
+            name: 'EquipmentAcceptanceDetails',
+            component: EquipmentAcceptanceDetails,
+        }
     ]
 })
 
