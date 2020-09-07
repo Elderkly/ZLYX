@@ -262,30 +262,32 @@
         align-items: center;
         background: #45918A;
         border-radius: 14px 14px 0 0;
+        position: fixed;
+        z-index: 10;
+        top: 105px;
         div{
-            width: 178px;
+            width: 177.5px;
             height: 96px;
             text-align: center;
             line-height: 96px;
             font-size: 28px;
             color: rgba(255,255,255,.7);
+            border-radius: 14px 14px 0 0;
         }
         .action{
             color: $THEME-COLOR;
             background: #fff;
-            border-radius: 12px 12px 0 0;
         }
     }
     .contentBox{
-        position: relative;
-        top: -1px;
+        margin-top: 85px;
         &>div{
             padding: 0 30px;
             border-radius: 14px;
             background: #fff;
             margin-bottom: 30px;
             &:first-child{
-                border-radius: 0 0 14px 14px;
+                border-radius: 14px;
             }
         }
     }
