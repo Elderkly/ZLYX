@@ -238,3 +238,14 @@ p,span{
         margin-top: 720px;
     }
 }
+.minListLength{
+    width: 100vw;
+    font-size: 29px;
+    color: rgba(255,255,255,.7);
+    text-indent: 42px;
+    background: $THEME-COLOR;
+    position: fixed;
+    left: 0;
+    top: 200px;
+    padding: 10px 0
+}

@@ -78,6 +78,8 @@ import History from '../page/history/history'
 import StorageEquipment from '../page/storageEquipment/storageEquipment'
 //  设备验收信息
 import EquipmentAcceptanceDetails from '../page/equipmentAcceptanceDetails/equipmentAcceptanceDetails'
+//  科室报修-搜索
+import Search from '../page/search/search'
 
 //  消息
 import Message from '@/page/message/message'
@@ -372,6 +374,11 @@ const _Router = new Router({
             path: '/equipmentAcceptanceDetails',
             name: 'EquipmentAcceptanceDetails',
             component: EquipmentAcceptanceDetails,
+        },
+        {
+            path: '/search',
+            name: 'Search',
+            component: Search,
         }
     ]
 })

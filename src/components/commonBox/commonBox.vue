@@ -3,7 +3,7 @@
         <div class="header">
             <img src="../../assets/img/left.png" @click="back" v-if="leftButton">
             <p>{{title}}</p>
-            <div v-if="rightButton === 'search'" class="search">
+            <div v-if="rightButton === 'search'" class="search" @click="$emit('Search')">
                 <img src="../../assets/img/search.png">
             </div>
             <span v-else-if="rightButton && typeof rightButton === 'string'" @click="$router.push(path)">{{rightButton}}</span>

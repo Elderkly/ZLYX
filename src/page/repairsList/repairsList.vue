@@ -1,5 +1,5 @@
 <template>
-    <Box title="科室报修" right-button="search">
+    <Box title="科室报修" right-button="search" @Search="Search">
         <van-tabs
             swipeable
             background="rgba(0,0,0,0)"
@@ -13,6 +13,7 @@
                         :finished="DepartmentEquLoad.finished"
                         @load="onLoad_DepartmentEqu"
                     >
+                        <p class="minListLength">共计： {{DepartmentEquList.length}}条</p>
                         <div class="commonItems" v-for="item in DepartmentEquList" @click="$router.push({name: 'Repairs', params: {item}})">
                             <div>
                                 <img :src="item.Img"/>
@@ -50,6 +51,7 @@
                         :finished="DepartmentEquHasLoad.finished"
                         @load="onLoad_DepartmentEquHas"
                     >
+                        <p class="minListLength">共计： {{DepartmentEquListHas.length}}条</p>
                         <div class="commonItems" v-for="item in DepartmentEquListHas">
                             <div>
                                 <img :src="item.Img"/>
@@ -655,6 +657,9 @@
                         finished: true
                     }
                 },1000)
+            },
+            Search() {
+                this.$router.push('/search')
             }
         }
     }
@@ -662,6 +667,6 @@
 
 <style scoped lang="scss">
     .tagsBox{
-        margin-top: 120px;
+        margin-top: 160px;
     }
 </style>
