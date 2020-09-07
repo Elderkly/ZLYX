@@ -13,7 +13,7 @@
                 <div class="search" @click="serach">查询</div>
             </div>
             <p class="listLength">共计 <span>{{list.length}}条</span></p>
-            <div class="items" v-for="item in list" @click="$router.push({name: 'QualityTest', params: {item} })">
+            <div class="listItems items" v-for="item in list" @click="$router.push({name: 'QualityTest', params: {item} })">
                 <div>
                     <img :src="item.Img"/>
                     <div>

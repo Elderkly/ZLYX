@@ -215,3 +215,26 @@ p,span{
         border-radius: 10px!important;
     }
 }
+
+.menu{
+    position: fixed;
+    width: 710px;
+    z-index: 6;
+    top: 105px;
+}
+.listLength{
+    position: fixed;
+    top: 715px;
+    width: 100%;
+    background: #F0F4F7;
+    left: -30px;
+    text-indent: 50px;
+    z-index: 5;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+.listItems{
+    &:nth-child(3){
+        margin-top: 720px;
+    }
+}

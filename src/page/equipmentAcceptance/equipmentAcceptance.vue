@@ -14,7 +14,7 @@
                 <div class="search" @click="serach">查询</div>
             </div>
             <p class="listLength">共计 <span>{{list.length}}条</span></p>
-            <div class="items" v-for="item in list" @click="$router.push({name: 'EquipmentAcceptanceDetails', params: {item} })">
+            <div class="items listItems" v-for="item in list" @click="$router.push({name: 'EquipmentAcceptanceDetails', params: {item} })">
                 <div>
                     <img :src="item.Img"/>
                     <div>
@@ -793,5 +793,11 @@
             color: $THEME-COLOR;
             font-weight: bold;
         }
+    }
+    .listLength{
+        top: 830px;
+    }
+    .listItems:nth-child(3){
+        margin-top: 800px;
     }
 </style>

@@ -16,7 +16,7 @@
                 </div>
                 <div class="search" @click="serach">查询</div>
             </div>
-            <div class="items">
+            <div class="items listItems">
                 <div>
                     <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3041974687,1312568471&fm=26&gp=0.jpg"/>
                     <div>
@@ -322,5 +322,8 @@
                 }
             }
         }
+    }
+    .listItems:nth-child(2){
+        margin-top: 420px;
     }
 </style>
