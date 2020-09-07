@@ -2,7 +2,7 @@
     <div class="equipment">
         <p class="title">设备信息</p>
         <div class="equipment-details">
-            <img :src="data.Images"/>
+            <img :src="data.Images" @click="showImg(data.Images)"/>
             <div>
                 <div>
                     <p>资产名称：</p>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+    import {ImagePreview, Toast} from 'vant'
     //  设备信息模块
     export default {
         name: 'FacilityDetails',
@@ -34,6 +35,15 @@
             hiddenDepartment: {
                 type: Boolean,
                 default: false
+            }
+        },
+        methods: {
+            showImg(src) {
+                if (src) {
+                    ImagePreview([src])
+                } else {
+                    // Toast('没有图片')
+                }
             }
         }
     }

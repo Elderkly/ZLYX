@@ -4,7 +4,7 @@
             <div class="equipment box">
                 <p class="title">设备信息</p>
                 <div class="equipment-details">
-                    <img :src="equipment.img"/>
+                    <img :src="equipment.img" @click="showImg(equipment.img)"/>
                     <div>
                         <div>
                             <p>资产名称：</p>
@@ -57,7 +57,7 @@
 
 <script>
     import Box from '@/components/commonBox/commonBox'
-    import { Checkbox, CheckboxGroup} from 'vant'
+    import {Checkbox, CheckboxGroup, ImagePreview} from 'vant'
     import Field from '@/components/field/field'
     export default {
         name: 'BorrowDetails',
@@ -121,6 +121,13 @@
                 }
                 alert(JSON.stringify(uploadData))
                 console.log('设备信息:',this.equipment,'\n','选中的配件信息:',newResult,'\n','借用信息:',this.borrow,'\n','申请说明:',this.explain)
+            },
+            showImg(src) {
+                if (src) {
+                    ImagePreview([src])
+                } else {
+                    // Toast('没有图片')
+                }
             }
         }
     }

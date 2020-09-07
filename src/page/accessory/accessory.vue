@@ -4,7 +4,7 @@
             <div class="equipment">
                 <p class="title">设备信息</p>
                 <div class="equipment-details">
-                    <img :src="data.Images"/>
+                    <img :src="data.Images" @click="showImg(data.Images)"/>
                     <div>
                         <div>
                             <p>资产名称：</p>
@@ -31,6 +31,7 @@
     import Box from '../../components/commonBox/commonBox'
     import ImgModule from '../../components/imgModule/imgModule'
     import Footer from '../../components/footer/footer'
+    import {ImagePreview, Toast} from "vant";
     export default {
         name: 'Accessory',
         components: {
@@ -62,6 +63,13 @@
                     this.uploadImg,
                 )
                 alert('报废')
+            },
+            showImg(src) {
+                if (src) {
+                    ImagePreview([src])
+                } else {
+                    // Toast('没有图片')
+                }
             }
         }
     }
