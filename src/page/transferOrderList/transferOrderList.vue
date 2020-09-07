@@ -5,6 +5,7 @@
             :finished="finished"
             @load="onLoad"
         >
+            <p class="minListLength">共计： {{List.length}}条</p>
             <div class="commonItems" v-for="item in List" @click="$router.push({name: 'TransferOrder', params: {item}})">
                 <div>
                     <img :src="item.Img"/>
@@ -222,3 +223,12 @@
         }
     }
 </script>
+
+<style scoped lang="scss">
+    .minListLength{
+        top: 105px;
+    }
+    .commonItems:nth-child(2) {
+        margin-top: 70px;
+    }
+</style>

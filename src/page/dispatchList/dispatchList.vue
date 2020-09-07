@@ -13,6 +13,7 @@
                         :finished="NotDispatch.finished"
                         @load="onLoad_NotDispatch"
                     >
+                        <p class="minListLength">共计： {{NotDispatchList.length}}条</p>
                         <div class="commonItems" v-for="item in NotDispatchList" @click="$router.push({name: 'Dispatch', params: {item}})">
                             <div>
                                 <img :src="item.Img"/>
@@ -50,6 +51,7 @@
                         :finished="Dispatch.finished"
                         @load="onLoad_Dispatch"
                     >
+                        <p class="minListLength">共计： {{DispatchList.length}}条</p>
                         <div class="commonItems" v-for="item in DispatchList">
                             <div>
                                 <img :src="item.Img"/>
@@ -390,6 +392,6 @@
 
 <style scoped lang="scss">
     .tagsBox{
-        margin-top: 120px;
+        margin-top: 160px;
     }
 </style>
