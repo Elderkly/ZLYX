@@ -7,7 +7,7 @@
                 <img src="../../assets/img/search.png">
             </div>
             <span v-else-if="rightButton && typeof rightButton === 'string'" @click="$router.push(path)">{{rightButton}}</span>
-            <span class="textItems" v-else-if="rightButton && typeof rightButton !== 'string'" v-for="item in rightButton" @click="$router.push(item.router)">{{item.text}}</span>
+            <span class="textItems" v-else-if="rightButton && typeof rightButton !== 'string' && rightButton.length > 1" v-for="item in rightButton" @click="$router.push(item.router)">{{item.text}}</span>
         </div>
         <div class="bool"/>
         <div class="content">

@@ -76,9 +76,9 @@
         name: 'Ask',
         data() {
             return {
-                data: this.$route.params.item,
-                uploadData: JSON.parse(JSON.stringify(this.$route.params.item)),
-                "rows": [{
+                data: this.$route.params.item | {},
+                uploadData: this.$route.params.item ? JSON.parse(JSON.stringify(this.$route.params.item)) : {},
+                "rows": this.$route.params.item ? [{
                     "SBMCBH": "",
                     "SBMC": "超声吸引器",
                     "SBBM": "we will have",
@@ -118,7 +118,7 @@
                     "GZLBMC": null,
                     "PPMC": "                                        ",
                     "SFJKMC": "进口"
-                }],
+                }] : [],
             }
         },
         mounted() {

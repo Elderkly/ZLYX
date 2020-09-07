@@ -1,5 +1,5 @@
 <template>
-    <Box title="申请列表">
+    <Box title="申请列表" rightButton="新增申请" path="/ask">
         <LoadingFooter
             v-model="loading"
             :finished="finished"
