@@ -72,7 +72,7 @@
                 default: []
             },
             action: Boolean,    //  当前tag是否聚焦
-
+            inputValue: String, //  首页搜索数据
         },
         components: {
             LoadingFooter,
@@ -357,6 +357,15 @@
                 this.endTime = data
                 //  选择完结束日期 在这里做数据刷新
                 //  ...
+            }
+        },
+        watch: {
+            //  监听首页输入内容变化
+            inputValue(newValue, oldValue) {
+                //  在这里进行搜索查询操作
+                if (this.action) {
+                    console.log('当前标签页：',this.$store.getters.tabsIndex + 1,'输入框内容',newValue,this.endTime)
+                }
             }
         }
     }
