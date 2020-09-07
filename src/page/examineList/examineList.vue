@@ -14,6 +14,13 @@
                         :finished="ListConfig1.finished"
                         @load="onLoad1"
                     >
+                        <div class="menu">
+                            <Field title="资产名称" placeholder="请输入资产名称" @onMessage="value => search1.params1 = value"/>
+                            <Field title="结束时间" placeholder="请选择" type="calendar" @onMessage="value => search1.params2 = value"/>
+                            <Field title="关键词搜索" placeholder="请输入关键词" @onMessage="value => search1.params3 = value"/>
+                            <div class="search" @click="serach">查询</div>
+                        </div>
+                        <p class="listLength">共计 <span>{{List1.length}}条</span></p>
                         <div class="commonItems" v-for="item in List1" @click="$router.push({name: 'Examine', params: {item}})">
                             <div>
                                 <img :src="item.Img"/>
@@ -55,6 +62,13 @@
                         :finished="ListConfig2.finished"
                         @load="onLoad2"
                     >
+                        <div class="menu">
+                            <Field title="资产名称" placeholder="请输入资产名称" @onMessage="value => search2.params1 = value"/>
+                            <Field title="结束时间" placeholder="请选择" type="calendar" @onMessage="value => search2.params2 = value"/>
+                            <Field title="关键词搜索" placeholder="请输入关键词" @onMessage="value => search2.params3 = value"/>
+                            <div class="search" @click="serach">查询</div>
+                        </div>
+                        <p class="listLength">共计 <span>{{List2.length}}条</span></p>
                         <div class="commonItems" v-for="item in List2">
                             <div>
                                 <img :src="item.Img"/>
@@ -95,11 +109,13 @@
     import Box from '../../components/commonBox/commonBox'
     import {Tab, Tabs} from 'vant'
     import LoadingFooter from '../../components/loadingFooter/loadingFooter'
+    import Field from '../../components/field/field'
     export default {
         name: 'DispatchList',
         components: {
             Box,
             LoadingFooter,
+            Field,
             [Tab.name]: Tab,
             [Tabs.name]: Tabs,
         },
@@ -113,6 +129,16 @@
                 ListConfig2: {
                     loading: false,
                     finished: false
+                },
+                search1:{
+                    params1: null,
+                    params2: null,
+                    params3: null
+                },
+                search2:{
+                    params1: null,
+                    params2: null,
+                    params3: null
                 },
                 "List1": [{
                     "AssetsId": "35020100084",
@@ -304,6 +330,9 @@
                         finished: true
                     }
                 },1000)
+            },
+            serach() {
+                alert(JSON.stringify(this[`search${this.tabsIndex + 1}`]))
             }
         },
         watch: {
@@ -317,5 +346,55 @@
 <style scoped lang="scss">
     .tagsBox{
         margin-top: 120px;
+    }
+    .menu{
+        background: $BACKGROUND-COLOR;
+        border-radius: 12px;
+        padding: 0 29px 35px 40px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        top: 205px;
+        .items{
+            display: flex;
+            height: 112px;
+            align-items: center;
+            border-bottom: 2px solid #F3F3F3;
+            span{
+                flex: 1;
+            }
+            input{
+                width: 215px;
+                font-size: 29px;
+                text-align: center;
+                &::-webkit-input-placeholder{
+                    color: #858585;
+                }
+            }
+        }
+        .search{
+            height: 88px;
+            background: $THEME-COLOR;
+            border-radius: 8px;
+            font-size: 32px;
+            color: $TEXT-LIGHT-COLOR;
+            text-align: center;
+            line-height: 88px;
+            margin-top: 35px;
+        }
+    }
+    .listLength{
+        font-size: 29px;
+        color: #4a4a4a;
+        margin-bottom: 18px;
+        margin-left: 30px;
+        top: 700px;
+        span{
+            margin-left: 20px;
+            color: $THEME-COLOR;
+            font-weight: bold;
+        }
+    }
+    .commonItems:nth-child(3) {
+        margin-top: 680px;
     }
 </style>
