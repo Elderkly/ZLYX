@@ -1,59 +1,62 @@
 <template>
-    <Box title="申请列表" rightButton="新增申请" path="/ask">
-        <LoadingFooter
-            v-model="loading"
-            :finished="finished"
-            @load="onLoad"
-        >
-            <div class="menu">
-                <Field title="申请单号" placeholder="请输入" @onMessage="value => search.params1 = value"/>
-                <Field title="申请科室" placeholder="请输入" @onMessage="value => search.params2 = value"/>
-                <Field title="设备名称" placeholder="请输入" @onMessage="value => search.params3 = value"/>
-                <Field title="审核状态" type="teb" :data="['未审核','审核中','已审核','全部']" @onMessage="value => search.params4 = value"/>
-                <Field title="计划类型" type="teb" :data="['科室申请','年度计划']" @onMessage="value => search.params5 = value"/>
-                <Field title="开始时间" placeholder="请选择" type="calendar" @onMessage="value => search.params6 = value"/>
-                <Field title="结束时间" placeholder="请选择" type="calendar" @onMessage="value => search.params7 = value"/>
-                <div class="search" @click="serach">查询</div>
-            </div>
-            <p class="listLength">共计 <span>{{list.length}}条</span></p>
-            <div class="items listItems" v-for="(item, index) in list" @click="$router.push({name: 'Ask', params: {item} })">
-                <div class="itemTopBox">
-                    <div>
-                        <span>申请单号</span>
-                        <span>{{item.DH}}</span>
+    <div @touchstart="touchStart">
+        <Box title="申请列表" rightButton="新增申请" path="/ask">
+            <LoadingFooter
+                v-model="loading"
+                :finished="finished"
+                @load="onLoad"
+                @scroll="onScroll"
+            >
+                <div :class="menuHidden ? 'menuHidden menu' : 'menu'">
+                    <Field title="申请单号" placeholder="请输入" @onMessage="value => search.params1 = value"/>
+                    <Field title="申请科室" placeholder="请输入" @onMessage="value => search.params2 = value"/>
+                    <Field title="设备名称" placeholder="请输入" @onMessage="value => search.params3 = value"/>
+                    <Field title="审核状态" type="teb" :data="['未审核','审核中','已审核','全部']" @onMessage="value => search.params4 = value"/>
+                    <Field title="计划类型" type="teb" :data="['科室申请','年度计划']" @onMessage="value => search.params5 = value"/>
+                    <Field title="开始时间" placeholder="请选择" type="calendar" @onMessage="value => search.params6 = value"/>
+                    <Field title="结束时间" placeholder="请选择" type="calendar" @onMessage="value => search.params7 = value"/>
+                    <div class="search" @click="serach">查询</div>
+                </div>
+                <p :class="menuHidden ? 'menuHidden listLength' : 'listLength'">共计 <span>{{list.length}}条</span></p>
+                <div class="items listItems" v-for="(item, index) in list" @click="$router.push({name: 'Ask', params: {item} })">
+                    <div class="itemTopBox">
+                        <div>
+                            <span>申请单号</span>
+                            <span>{{item.DH}}</span>
+                        </div>
+                        <div>
+                            <span>申请科室</span>
+                            <span>{{item.KSMC}}</span>
+                        </div>
+                        <div>
+                            <span>申请日期</span>
+                            <span>{{item.RQ}}</span>
+                        </div>
+                        <div>
+                            <span>申请人</span>
+                            <span>{{item.ZDRXM}}</span>
+                        </div>
+                        <div>
+                            <span>申请设备</span>
+                            <span>{{item.SQSBMX}}</span>
+                        </div>
+                        <div>
+                            <span>申请理由</span>
+                            <span>{{item.SQYY}}</span>
+                        </div>
+                        <div>
+                            <span>申请标志</span>
+                            <span>{{item.SHBZ}}</span>
+                        </div>
                     </div>
-                    <div>
-                        <span>申请科室</span>
-                        <span>{{item.KSMC}}</span>
-                    </div>
-                    <div>
-                        <span>申请日期</span>
-                        <span>{{item.RQ}}</span>
-                    </div>
-                    <div>
-                        <span>申请人</span>
-                        <span>{{item.ZDRXM}}</span>
-                    </div>
-                    <div>
-                        <span>申请设备</span>
-                        <span>{{item.SQSBMX}}</span>
-                    </div>
-                    <div>
-                        <span>申请理由</span>
-                        <span>{{item.SQYY}}</span>
-                    </div>
-                    <div>
-                        <span>申请标志</span>
-                        <span>{{item.SHBZ}}</span>
+                    <div class="itemBottomBox">
+                        <div @click.stop="_delete(item, index)">删除</div>
+                        <div>修改</div>
                     </div>
                 </div>
-                <div class="itemBottomBox">
-                    <div @click.stop="_delete(item, index)">删除</div>
-                    <div>修改</div>
-                </div>
-            </div>
-        </LoadingFooter>
-    </Box>
+            </LoadingFooter>
+        </Box>
+    </div>
 </template>
 
 <script>
@@ -75,6 +78,12 @@
                 },
                 loading: false,
                 finished: false,
+                menuHidden: false,
+                scrollSwitch: true,
+                touchStartY: 0,
+                touchMoveY: 0,
+                touchEndY: 0,
+                scrollY:0,
                 list: [{
                     "DH": "202008100001  ",
                     "STORE": "0101                ",
@@ -398,7 +407,37 @@
             _delete(item, index) {
                 console.log('删除',item)
                 this.list.splice(index,1)
+            },
+            onScroll(value) {
+                if (!this.scrollSwitch) return
+                this.scrollY = value
+                if (value > this.touchStartY) {
+                    console.log('向下')
+                    this.touchStartY = value
+                    this.menuHidden = true
+                } else if ((this.touchStartY - value) > 200){
+                    console.log('向上')
+                    this.touchStartY = value
+                    this.menuHidden = false
+                }
+            },
+            touchStart() {
+                // console.log(event.changedTouches[0].pageY)
+                this.touchStartY = this.scrollY
             }
+        },
+        watch: {
+            $route(to, from) {
+                console.log(this.scrollY)
+                if (to.name === 'AskList' && this.menuHidden === true && this.scrollY < 500) {
+                    console.log('路由初始化',this.scrollY)
+                    this.menuHidden = false
+                }
+                if (to.name === 'AskList') {
+                    this.scrollSwitch = false
+                    setTimeout(() => this.scrollSwitch = true,500)
+                }
+            },
         }
     }
 </script>
@@ -410,6 +449,7 @@
         padding: 0 29px 35px 40px;
         box-sizing: border-box;
         margin-bottom: 20px;
+        transition: all .5s;
         .items{
             display: flex;
             height: 112px;
@@ -437,6 +477,9 @@
             line-height: 88px;
             margin-top: 35px;
         }
+    }
+    .menuHidden{
+        margin-top: -800px;
     }
     .items{
         background: $BACKGROUND-COLOR;
@@ -491,6 +534,7 @@
         color: #4a4a4a;
         margin-bottom: 18px;
         margin-left: 30px;
+        transition: all .5s;
         span{
             margin-left: 20px;
             color: $THEME-COLOR;

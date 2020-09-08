@@ -1,53 +1,56 @@
 <template>
-    <Box title="设备验收" :rightButton="[{text:'新增设备', router: '/equipmentAcceptanceDetails'},{text:'历史记录', router: '/history'}]">
-        <LoadingFooter
-            v-model="loading"
-            :finished="finished"
-            @load="onLoad"
-        >
-            <div class="menu">
-                <Field title="合同编号" placeholder="请输入合同编号" @onMessage="value => search.params1 = value"/>
-                <Field title="供应商" placeholder="请输入供应商" @onMessage="value => search.params2 = value"/>
-                <Field title="设备名称" placeholder="请输入设备名称" @onMessage="value => search.params3 = value"/>
-                <Field title="开始时间" placeholder="请选择" type="calendar" @onMessage="value => search.params4 = value"/>
-                <Field title="结束时间" placeholder="请选择" type="calendar" @onMessage="value => search.params5 = value"/>
-                <div class="search" @click="serach">查询</div>
-            </div>
-            <p class="listLength">共计 <span>{{list.length}}条</span></p>
-            <div class="items listItems" v-for="item in list" @click="$router.push({name: 'EquipmentAcceptanceDetails', params: {item} })">
-                <div>
-                    <img :src="item.Img"/>
+    <div @touchstart="touchStart">
+        <Box title="设备验收" :rightButton="[{text:'新增设备', router: '/equipmentAcceptanceDetails'},{text:'历史记录', router: '/history'}]">
+            <LoadingFooter
+                v-model="loading"
+                :finished="finished"
+                @load="onLoad"
+                @scroll="onScroll"
+            >
+                <div :class="menuHidden ? 'menuHidden menu' : 'menu'">
+                    <Field title="合同编号" placeholder="请输入合同编号" @onMessage="value => search.params1 = value"/>
+                    <Field title="供应商" placeholder="请输入供应商" @onMessage="value => search.params2 = value"/>
+                    <Field title="设备名称" placeholder="请输入设备名称" @onMessage="value => search.params3 = value"/>
+                    <Field title="开始时间" placeholder="请选择" type="calendar" @onMessage="value => search.params4 = value"/>
+                    <Field title="结束时间" placeholder="请选择" type="calendar" @onMessage="value => search.params5 = value"/>
+                    <div class="search" @click="serach">查询</div>
+                </div>
+                <p :class="menuHidden ? 'menuHidden listLength' : 'listLength'">共计 <span>{{list.length}}条</span></p>
+                <div class="items listItems" v-for="item in list" @click="$router.push({name: 'EquipmentAcceptanceDetails', params: {item} })">
                     <div>
-                        <p class="ellipsis">{{item.HTMC}}</p>
+                        <img :src="item.Img"/>
+                        <div>
+                            <p class="ellipsis">{{item.HTMC}}</p>
+                            <div>
+                                <div>
+                                    <p>设备名称：</p>
+                                    <p>单价：</p>
+                                    <p>数量：</p>
+                                    <p>乙方单位：</p>
+                                </div>
+                                <div>
+                                    <p class="ellipsis">{{item.MC}}</p>
+                                    <p class="ellipsis">{{item.DJ}}</p>
+                                    <p class="ellipsis">{{item.SL}}</p>
+                                    <p class="ellipsis">{{item.GYSMC}}</p>
+                                </div>
+                            </div>
+                        </div>
                         <div>
                             <div>
-                                <p>设备名称：</p>
-                                <p>单价：</p>
-                                <p>数量：</p>
-                                <p>乙方单位：</p>
+                                <span class="ellipsis">¥<span>{{item.HTJE}}</span></span> <img src="../../assets/img/right.png"/>
                             </div>
-                            <div>
-                                <p class="ellipsis">{{item.MC}}</p>
-                                <p class="ellipsis">{{item.DJ}}</p>
-                                <p class="ellipsis">{{item.SL}}</p>
-                                <p class="ellipsis">{{item.GYSMC}}</p>
-                            </div>
+                            <div>验收</div>
                         </div>
                     </div>
                     <div>
-                        <div>
-                            <span class="ellipsis">¥<span>{{item.HTJE}}</span></span> <img src="../../assets/img/right.png"/>
-                        </div>
-                        <div>验收</div>
+                        <span>合同编号</span>
+                        <span>{{item.HTBH}}</span>
                     </div>
                 </div>
-                <div>
-                    <span>合同编号</span>
-                    <span>{{item.HTBH}}</span>
-                </div>
-            </div>
-        </LoadingFooter>
-    </Box>
+            </LoadingFooter>
+        </Box>
+    </div>
 </template>
 
 <script>
@@ -65,6 +68,10 @@
                     params4: null,
                     params5: null
                 },
+                scrollSwitch: true,
+                menuHidden: false,
+                touchStartY: 0,
+                scrollY:0,
                 loading: false,
                 finished: false,
                 list: [{
@@ -646,7 +653,36 @@
                     //  数据是否加载完毕
                     this.finished = true
                 },1000)
+            },
+            onScroll(value) {
+                if (!this.scrollSwitch) return
+                this.scrollY = value
+                if (value > this.touchStartY) {
+                    console.log('向下')
+                    this.touchStartY = value
+                    this.menuHidden = true
+                } else if ((this.touchStartY - value) > 200){
+                    console.log('向上')
+                    this.touchStartY = value
+                    this.menuHidden = false
+                }
+            },
+            touchStart() {
+                // console.log(event.changedTouches[0].pageY)
+                this.touchStartY = this.scrollY
             }
+        },
+        watch: {
+            $route(to, from) {
+                if (to.name === 'EquipmentAcceptance' && this.menuHidden === true && this.scrollY < 350) {
+                    console.log('路由初始化',this.scrollY)
+                    this.menuHidden = false
+                }
+                if (to.name === 'EquipmentAcceptance') {
+                    this.scrollSwitch = false
+                    setTimeout(() => this.scrollSwitch = true,500)
+                }
+            },
         }
     }
 </script>
@@ -658,6 +694,7 @@
         padding: 0 29px 35px 40px;
         box-sizing: border-box;
         margin-bottom: 20px;
+        transition: all .5s;
         .items{
             display: flex;
             height: 112px;
@@ -719,12 +756,12 @@
                                 font-size: 26px;
                                 line-height: 45px;
                                 height: 45px;
-                                width: 130px;
+                                width: 150px;
                             }
                             &>div{
                                 &:last-child{
                                     p{
-                                        width: 220px;
+                                        width: 200px;
                                     }
                                 }
                             }
@@ -788,6 +825,7 @@
         color: #4a4a4a;
         margin-bottom: 18px;
         margin-left: 30px;
+        transition: all .5s;
         span{
             margin-left: 20px;
             color: $THEME-COLOR;
@@ -799,5 +837,8 @@
     }
     .listItems:nth-child(3){
         margin-top: 800px;
+    }
+    .menuHidden{
+        margin-top: -580px;
     }
 </style>

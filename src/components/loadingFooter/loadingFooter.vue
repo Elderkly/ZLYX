@@ -92,12 +92,13 @@
                 } else {
                     // console.log('0')
                 }
+                this.$emit('scroll',this.getScrollTop())
             },
         },
         watch: {
             $route(to, from) {
                 //  页面聚焦创建监听 失焦注销监听
-                if (to.name === this.routerName && !this.finished) {
+                if (to.name === this.routerName) {
                     this.createListen()
                 } else {
                     this.removeListen()
@@ -105,7 +106,7 @@
             },
             finished(to) {
                 //  数据加载完毕 注销监听
-                if (to) this.removeListen()
+                // if (to) this.removeListen()
             },
             value(to) {
                 // console.log('updateLoading',to)
