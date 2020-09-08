@@ -37,7 +37,7 @@
             </div>
             <div class="infoBox">
                 <p class="title">备注</p>
-                <input type="text" placeholder="请输入" v-model="remark"/>
+                <textarea type="text" placeholder="请输入" cols="3" v-model="remark"/>
             </div>
             <ImgModule upload @changeImg="list => uploadImg = list"/>
         </Box>

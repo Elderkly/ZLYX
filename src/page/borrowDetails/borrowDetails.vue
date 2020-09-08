@@ -46,7 +46,7 @@
             </div>
             <div class="explain box">
                 <p class="title">申请说明</p>
-                <input type="text" placeholder="请输入申请内容" v-model="explain"/>
+                <textarea type="text" placeholder="请输入申请内容" cols="3" v-model="explain"/>
             </div>
         </Box>
         <div class="footer">
@@ -250,6 +250,16 @@
             text-align: center;
             line-height: 96px;
             margin: auto;
+        }
+    }
+    textarea{
+        font-size: 30px;
+        width: 100%;
+        border: none;
+        resize: none;
+        margin: 20px 0;
+        &::-webkit-input-placeholder{
+            color: #858585;
         }
     }
 </style>
